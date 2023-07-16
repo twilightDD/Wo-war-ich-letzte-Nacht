@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+        <attribute name="lattitude" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="longitude" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="resolvedAddress" optional="YES" attributeType="String"/>
+        <attribute name="timeStamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="locations" inverseEntity="Place"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String"/>
+        <relationship name="locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="place" inverseEntity="Location"/>
+    </entity>
+</model>
