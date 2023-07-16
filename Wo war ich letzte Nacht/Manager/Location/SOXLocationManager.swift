@@ -128,7 +128,7 @@ extension SOXLocationManager:CLLocationManagerDelegate {
             // Show alert instructing them how to turn on permissions
             break
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
         case .restricted:
             // user may not change it (i.e. parental limitations)
             break
