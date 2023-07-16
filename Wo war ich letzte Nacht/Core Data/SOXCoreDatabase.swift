@@ -18,6 +18,8 @@ class SOXCoreDatabase {
     
     // MARK: Private Lets and Vars
     private static let shared = SOXCoreDatabase()
+    //MARK: - Database Setup Stuff
+    private static let managedObjectModelName = "Wo_war_ich_letzte_Nacht"
     
     private var managedObjectModelName: String?
     private var persistentContainer: NSPersistentContainer? {
@@ -43,6 +45,12 @@ class SOXCoreDatabase {
     
     
     // MARK: Public Methods
+    class func startUp() {
+        
+        setupPersistentContainer(atDirectory: SOXFileManager.documentDirectoryURL(),
+                                 persistentContainerName: managedObjectModelName,
+                                 managedObjectModelName: managedObjectModelName)
+    }
     class func setupPersistentContainer(atDirectory persistentDirectory: URL,
                                         persistentContainerName: String,
                                         managedObjectModelName: String)  {

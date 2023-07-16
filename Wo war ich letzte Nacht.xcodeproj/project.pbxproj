@@ -42,6 +42,7 @@
 		D0C3D12C2A6403FB003FA2C9 /* String+VersionCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D12A2A6403FB003FA2C9 /* String+VersionCompare.swift */; };
 		D0C3D12D2A6403FB003FA2C9 /* String+Lenght.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D12B2A6403FB003FA2C9 /* String+Lenght.swift */; };
 		D0C3D12F2A640425003FA2C9 /* Collection+Convenice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D12E2A640425003FA2C9 /* Collection+Convenice.swift */; };
+		D0C3D1312A640AB7003FA2C9 /* SOXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D1302A640AB6003FA2C9 /* SOXFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		D0C3D12A2A6403FB003FA2C9 /* String+VersionCompare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+VersionCompare.swift"; sourceTree = "<group>"; };
 		D0C3D12B2A6403FB003FA2C9 /* String+Lenght.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Lenght.swift"; sourceTree = "<group>"; };
 		D0C3D12E2A640425003FA2C9 /* Collection+Convenice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Convenice.swift"; sourceTree = "<group>"; };
+		D0C3D1302A640AB6003FA2C9 /* SOXFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 		D0C3D0F82A63FDA7003FA2C9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				D0C3D1302A640AB6003FA2C9 /* SOXFileManager.swift */,
 				D0C3D1262A6403CB003FA2C9 /* SOXErrorManager.swift */,
 				D0C3D1032A63FEF9003FA2C9 /* Location */,
 			);
@@ -412,6 +415,7 @@
 				D0C3D0C42A62E5B1003FA2C9 /* SceneDelegate.swift in Sources */,
 				D0C3D1202A6402EE003FA2C9 /* NSManagedObject+Convenients.swift in Sources */,
 				D0C3D1182A6402EE003FA2C9 /* NSManagedObjectContext+FetchMethods.swift in Sources */,
+				D0C3D1312A640AB7003FA2C9 /* SOXFileManager.swift in Sources */,
 				D0C3D1012A63FEEE003FA2C9 /* SOXLocationManagerDelegate.swift in Sources */,
 				D0C3D12F2A640425003FA2C9 /* Collection+Convenice.swift in Sources */,
 				D0C3D1052A6401DB003FA2C9 /* SOXCoreDatabase.swift in Sources */,

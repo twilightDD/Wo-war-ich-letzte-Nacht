@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
         
+        SOXCoreDatabase.startUp()
         SOXLocationManager.updateLocation()
         
         return true
