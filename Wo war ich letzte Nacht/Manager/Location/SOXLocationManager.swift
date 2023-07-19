@@ -18,6 +18,7 @@ class SOXLocationManager: NSObject {
     //MARK: Private Lets and Vars
     private static let shared = SOXLocationManager()
     private var trackingDelegates = NSHashTable<NSObject>()
+    private var visitsDelegates = NSHashTable<NSObject>()
     private var requestDelegates = NSHashTable<NSObject>()
     private lazy var locationManager = setupLocationManager()
     
@@ -35,6 +36,7 @@ class SOXLocationManager: NSObject {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.showsBackgroundLocationIndicator = true
+            locationManager.activityType = .other
             
             return locationManager
     }
@@ -43,26 +45,42 @@ class SOXLocationManager: NSObject {
     //MARK: - Public Class Methods
     class func updateLocation() {
         SOXLocationManager.shared.locationManager.startUpdatingLocation()
-        print("LocationManager.startUpdatingLocation: updateLocation")
+        print("LocationManager.startUpdatingLocation")
     }
+    
+    
+   
     
     @discardableResult
     class func stopUpdatingLocation(force: Bool)
-        -> Bool {
-            var stopUpdatingLocation = true
-            
-            if force == true {
-                SOXLocationManager.shared.locationManager.stopUpdatingLocation()
-            }
-            else if SOXLocationManager.shared.trackingDelegates.count == 0 {
-                SOXLocationManager.shared.locationManager.stopUpdatingLocation()
-            }
-            else {
-                stopUpdatingLocation = false
-            }
-            
-            return stopUpdatingLocation
+    -> Bool {
+        var stopUpdatingLocation = true
+        
+        if force == true {
+            SOXLocationManager.shared.locationManager.stopUpdatingLocation()
+        }
+        else if SOXLocationManager.shared.trackingDelegates.count == 0 {
+            SOXLocationManager.shared.locationManager.stopUpdatingLocation()
+        }
+        else {
+            stopUpdatingLocation = false
+        }
+        
+        return stopUpdatingLocation
     }
+    
+    
+    class func startMonitoringVisits() {
+        shared.locationManager.startMonitoringVisits()
+        print("LocationManager.startMonitoringVisits")
+    }
+    
+    
+    class func stopMonitoringVisits() {
+        shared.locationManager.stopMonitoringVisits()
+        print("LocationManager.stopMonitoringVisits")
+    }
+    
     
     class func latestLocation()
         -> CLLocation? {
@@ -76,6 +94,14 @@ class SOXLocationManager: NSObject {
     
     class func unRegisterForLocationTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
         SOXLocationManager.shared.unRegisterForLocationTracking(target: delegate)
+    }
+    
+    class func registerForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
+        SOXLocationManager.shared.registerForVisitTracking(target: delegate)
+    }
+    
+    class func unRegisterForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
+        SOXLocationManager.shared.unRegisterForVisitTracking(target: delegate)
     }
     
     class func requestLocation<T: SOXLocationManagerDelegate>(target delegate:T) {
@@ -103,6 +129,27 @@ class SOXLocationManager: NSObject {
         if trackingDelegates.count < 1 {
             locationManager.stopUpdatingLocation()
             print("LocationManager.unRegisterForLocationTracking: stopUpdatingLocation")
+        }
+    }
+    
+    private func registerForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
+       
+        guard let delegate = delegate as? NSObject else {
+            fatalError("Must be an NSObject") }
+        
+        visitsDelegates.add(delegate)
+        
+        locationManager.startMonitoringVisits()
+    }
+    
+    private func unRegisterForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
+        guard let delegate = delegate as? NSObject else {
+            fatalError("Must be an NSObject") }
+        
+        visitsDelegates.remove(delegate)
+        
+        if visitsDelegates.count < 1 {
+            locationManager.stopMonitoringVisits()
         }
     }
     

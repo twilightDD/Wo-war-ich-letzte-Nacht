@@ -41,30 +41,121 @@
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="bottom" secondItem="YKn-aY-sV5" secondAttribute="bottom" id="eBa-9f-ijh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Locations" selectedImage="map" catalog="system" id="UcR-SQ-Szh"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="map" catalog="system" selectedImage="map" id="UcR-SQ-Szh"/>
                     <connections>
                         <outlet property="mapView" destination="YKn-aY-sV5" id="JYJ-lX-vJ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgU-oh-0hv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674.04580152671758" y="-557.04225352112678"/>
+            <point key="canvasLocation" x="506" y="-454"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="vV3-oA-Ohh">
+            <objects>
+                <tableViewController id="Ydg-Wi-rbB" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="MhY-cW-xm2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WLa-Eh-Urf">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WLa-Eh-Urf" id="ddp-QD-kfQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ydg-Wi-rbB" id="zf6-54-wJZ"/>
+                            <outlet property="delegate" destination="Ydg-Wi-rbB" id="YLh-9t-F92"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="h5U-Rw-Z0L"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xi-yo-sXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="327" y="215"/>
+        </scene>
+        <!--Visits-->
+        <scene sceneID="7mR-Xi-4eR">
+            <objects>
+                <navigationController id="dNW-Vl-ngC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Visits" image="fireplace" catalog="system" id="ELD-hR-SdV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GI-66-Ycy">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ydg-Wi-rbB" kind="relationship" relationship="rootViewController" id="wG1-WV-82K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jed-rx-xKQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-581" y="213"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ci2-hD-BzQ">
             <objects>
-                <viewController id="FuO-wz-Zqw" sceneMemberID="viewController">
+                <viewController id="FuO-wz-Zqw" customClass="SettingsMainViewController" customModule="Wo_war_ich_letzte_Nacht" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sk1-pk-46N">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iV-l5-jjB">
+                                <rect key="frame" x="42.333333333333343" y="163" width="308.66666666666663" height="42.666666666666657"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="(Re)Start Tracking my Visits">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="startVisitTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="hg0-xY-Gs5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzo-h4-cUE">
+                                <rect key="frame" x="126.66666666666669" y="691" width="140" height="35"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete all Visits"/>
+                                <connections>
+                                    <action selector="deleteLocationStoreButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="8lh-Wj-L17"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-xL-8Cr">
+                                <rect key="frame" x="114.00000000000001" y="235.66666666666666" width="165.33333333333337" height="42.666666666666657"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Stop Tracking">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="stopTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="yGS-X8-aep"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="el6-M0-PAS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gzo-h4-cUE" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="Itd-P6-SUg"/>
+                            <constraint firstItem="0iV-l5-jjB" firstAttribute="top" secondItem="el6-M0-PAS" secondAttribute="top" constant="104" id="OLH-q6-usS"/>
+                            <constraint firstItem="UR2-xL-8Cr" firstAttribute="top" secondItem="0iV-l5-jjB" secondAttribute="bottom" constant="30" id="VFM-8o-XOy"/>
+                            <constraint firstItem="el6-M0-PAS" firstAttribute="bottom" secondItem="Gzo-h4-cUE" secondAttribute="bottom" constant="43" id="htH-Aw-ImX"/>
+                            <constraint firstItem="UR2-xL-8Cr" firstAttribute="centerX" secondItem="0iV-l5-jjB" secondAttribute="centerX" id="hwW-Yc-LH4"/>
+                            <constraint firstItem="0iV-l5-jjB" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="lwQ-Ur-GRh"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="gear" catalog="system" id="1X3-4z-J1m"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" selectedImage="gear" id="1X3-4z-J1m"/>
+                    <connections>
+                        <outlet property="deleteLocationStoreButton" destination="Gzo-h4-cUE" id="KjA-WY-srz"/>
+                        <outlet property="startVisitTrackingButton" destination="0iV-l5-jjB" id="Qyi-9y-j2E"/>
+                        <outlet property="stopTrackingButton" destination="UR2-xL-8Cr" id="Xbm-Mx-33a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blt-ea-Ftu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="51"/>
+            <point key="canvasLocation" x="-535" y="-779"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N5P-Kj-8Jk">
@@ -73,23 +164,31 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oks-sN-R4h" userLabel="Ich">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                     </tabBar>
                     <connections>
+                        <segue destination="FuO-wz-Zqw" kind="relationship" relationship="viewControllers" id="Nhz-RX-LdY"/>
                         <segue destination="mwB-dF-8h6" kind="relationship" relationship="viewControllers" id="GMI-iT-ihr"/>
-                        <segue destination="FuO-wz-Zqw" kind="relationship" relationship="viewControllers" id="sRV-2w-htX"/>
+                        <segue destination="dNW-Vl-ngC" kind="relationship" relationship="viewControllers" id="le2-OM-9P1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af5-vh-AQk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-231" y="-253"/>
+            <point key="canvasLocation" x="-1512" y="-430"/>
         </scene>
     </scenes>
     <resources>
+        <image name="fireplace" catalog="system" width="128" height="103"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

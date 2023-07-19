@@ -1,5 +1,5 @@
 //
-//  TrackedPlace+CoreDataClass.swift
+//  TrackedVisit+CoreDataClass.swift
 //  Wo war ich letzte Nacht
 //
 //  Created by Peter Hauke on 19.07.23.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(TrackedPlace)
-public class TrackedPlace: SOXManagedObject {
+@objc(TrackedVisit)
+public class TrackedVisit: SOXManagedObject {
 
 }

@@ -20,7 +20,6 @@ extension TrackedLocation {
     @NSManaged public var longitude: Double
     @NSManaged public var resolvedAddress: String?
     @NSManaged public var timeStamp: Date?
-    @NSManaged public var trackedPlace: TrackedPlace?
     @NSManaged public var uuid: UUID
 
 }

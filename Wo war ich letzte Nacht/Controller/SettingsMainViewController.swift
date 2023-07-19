@@ -7,8 +7,18 @@
 
 import UIKit
 
+//MARK: - SettingsMainViewController
 class SettingsMainViewController: UIViewController {
 
+    
+    //MARK: Lets&Vars
+    
+    //MARK: - IBOutlets
+    @IBOutlet var startVisitTrackingButton: UIButton!
+    @IBOutlet var stopTrackingButton: UIButton!
+    @IBOutlet var deleteLocationStoreButton: UIButton!
+    
+    //MARK: - Init&Co.
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +26,35 @@ class SettingsMainViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Action Methods
+    @IBAction func startVisitTrackingButtonAction(_ sender: UIButton) {
+        CoreDataLocationManager.startMonitoringVisits()
     }
-    */
-
+    
+    
+    @IBAction func stopTrackingButtonAction(_ sender: UIButton) {
+        SOXLocationManager.stopUpdatingLocation(force: true)
+        
+        CoreDataLocationManager.stopMonitoringVisits()
+    }
+    
+    
+    @IBAction func deleteLocationStoreButtonAction(_ sender: UIButton) {
+        let alertView = UIAlertController.init(title: "Sollen alle Visits gelöscht werden?",
+                                               message: nil,
+                                               preferredStyle: .alert)
+        alertView.addAction(UIAlertAction.init(title: "Niemand soll was wissen!",
+                                               style: .destructive,
+                                               handler:  { alertAction in
+            SOXCoreDatabase.performAndSaveInUIEditContext(workingBlock:  { context in
+                let _ = context.forgetAllDatabaseObjects()
+            })
+        }))
+        
+        alertView.addAction(UIAlertAction.init(title: "Nö, lieber nicht",
+                                               style: .cancel))
+        
+        present(alertView, animated: true)
+    }
+   
 }

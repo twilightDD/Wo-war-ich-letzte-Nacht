@@ -6,11 +6,14 @@
         <attribute name="resolvedAddress" optional="YES" attributeType="String"/>
         <attribute name="timeStamp" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="trackedPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackedPlace" inverseName="trackedLocations" inverseEntity="TrackedPlace"/>
     </entity>
-    <entity name="TrackedPlace" representedClassName="TrackedPlace" syncable="YES">
-        <attribute name="address" attributeType="String"/>
+    <entity name="TrackedVisit" representedClassName="TrackedVisit" syncable="YES">
+        <attribute name="arrivalDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="departureDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="horizontalAccuracy" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="placemark" optional="YES" attributeType="String"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="trackedLocations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrackedLocation" inverseName="trackedPlace" inverseEntity="TrackedLocation"/>
     </entity>
 </model>

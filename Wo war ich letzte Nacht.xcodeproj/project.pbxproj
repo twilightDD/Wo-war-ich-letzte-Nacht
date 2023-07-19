@@ -14,10 +14,10 @@
 		D03298302A67FC8C00FA787A /* SimpleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032982F2A67FC8C00FA787A /* SimpleAnnotation.swift */; };
 		D03298322A6828A800FA787A /* SOXDatasourceManagerCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298312A6828A700FA787A /* SOXDatasourceManagerCellProtocol.swift */; };
 		D03298342A68359400FA787A /* CoreDataLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298332A68359400FA787A /* CoreDataLocationManager.swift */; };
-		D03298412A683AC600FA787A /* TrackedPlace+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032983D2A683AC600FA787A /* TrackedPlace+CoreDataClass.swift */; };
-		D03298422A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032983E2A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift */; };
 		D03298432A683AC600FA787A /* TrackedLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032983F2A683AC600FA787A /* TrackedLocation+CoreDataClass.swift */; };
 		D03298442A683AC600FA787A /* TrackedLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298402A683AC600FA787A /* TrackedLocation+CoreDataProperties.swift */; };
+		D03298472A688FF500FA787A /* TrackedVisit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298452A688FF500FA787A /* TrackedVisit+CoreDataClass.swift */; };
+		D03298482A688FF500FA787A /* TrackedVisit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298462A688FF500FA787A /* TrackedVisit+CoreDataProperties.swift */; };
 		D0C3D0C22A62E5B1003FA2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */; };
 		D0C3D0C42A62E5B1003FA2C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */; };
 		D0C3D0C62A62E5B1003FA2C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C52A62E5B1003FA2C9 /* ViewController.swift */; };
@@ -81,10 +81,10 @@
 		D032982F2A67FC8C00FA787A /* SimpleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnnotation.swift; sourceTree = "<group>"; };
 		D03298312A6828A700FA787A /* SOXDatasourceManagerCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXDatasourceManagerCellProtocol.swift; sourceTree = "<group>"; };
 		D03298332A68359400FA787A /* CoreDataLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLocationManager.swift; sourceTree = "<group>"; };
-		D032983D2A683AC600FA787A /* TrackedPlace+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedPlace+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D032983E2A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedPlace+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D032983F2A683AC600FA787A /* TrackedLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D03298402A683AC600FA787A /* TrackedLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D03298452A688FF500FA787A /* TrackedVisit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedVisit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D03298462A688FF500FA787A /* TrackedVisit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackedVisit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D0C3D0BE2A62E5B1003FA2C9 /* Wo war ich letzte Nacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wo war ich letzte Nacht.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 		D0C3D0F52A63FD7A003FA2C9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				D032983D2A683AC600FA787A /* TrackedPlace+CoreDataClass.swift */,
 				D032983F2A683AC600FA787A /* TrackedLocation+CoreDataClass.swift */,
+				D03298452A688FF500FA787A /* TrackedVisit+CoreDataClass.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				D03298402A683AC600FA787A /* TrackedLocation+CoreDataProperties.swift */,
-				D032983E2A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift */,
+				D03298462A688FF500FA787A /* TrackedVisit+CoreDataProperties.swift */,
 			);
 			path = "Entity Categories";
 			sourceTree = "<group>";
@@ -446,7 +446,6 @@
 			files = (
 				D032982D2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift in Sources */,
 				D0C3D0C62A62E5B1003FA2C9 /* ViewController.swift in Sources */,
-				D03298412A683AC600FA787A /* TrackedPlace+CoreDataClass.swift in Sources */,
 				D0C3D11C2A6402EE003FA2C9 /* NSManagedObjectContext+Statistics.swift in Sources */,
 				D0C3D1252A6403B0003FA2C9 /* UIApplication+Helper.swift in Sources */,
 				D0C3D1022A63FEEE003FA2C9 /* SOXLocationManager.swift in Sources */,
@@ -470,6 +469,7 @@
 				D0C3D1072A6402C8003FA2C9 /* SOXManagedObject.swift in Sources */,
 				D0C3D1212A6402EE003FA2C9 /* NSManagedObject+ContextSwitch.swift in Sources */,
 				D0C3D0FA2A63FE48003FA2C9 /* SettingsMainViewController.swift in Sources */,
+				D03298482A688FF500FA787A /* TrackedVisit+CoreDataProperties.swift in Sources */,
 				D0C3D1162A6402EE003FA2C9 /* NSManagedObject+Validation.swift in Sources */,
 				D0C3D1292A6403E5003FA2C9 /* DispatchQueue+Delay.swift in Sources */,
 				D0C3D11E2A6402EE003FA2C9 /* UUID+UUIDStringFromDictionary.swift in Sources */,
@@ -477,13 +477,13 @@
 				D0C3D1172A6402EE003FA2C9 /* NSManagedObjectContext+Forget.swift in Sources */,
 				D0C3D12D2A6403FB003FA2C9 /* String+Lenght.swift in Sources */,
 				D0C3D0FE2A63FE6C003FA2C9 /* LocationsViewController.swift in Sources */,
+				D03298472A688FF500FA787A /* TrackedVisit+CoreDataClass.swift in Sources */,
 				D0C3D1222A6402EE003FA2C9 /* NSManagedObject+Debugging.swift in Sources */,
 				D03298432A683AC600FA787A /* TrackedLocation+CoreDataClass.swift in Sources */,
 				D03298322A6828A800FA787A /* SOXDatasourceManagerCellProtocol.swift in Sources */,
 				D0C3D11A2A6402EE003FA2C9 /* NSManagedObject+DeepCopy.swift in Sources */,
 				D032982A2A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift in Sources */,
 				D0C3D1272A6403CB003FA2C9 /* SOXErrorManager.swift in Sources */,
-				D03298422A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift in Sources */,
 				D0C3D11B2A6402EE003FA2C9 /* NSManagedObjectContext+Perform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

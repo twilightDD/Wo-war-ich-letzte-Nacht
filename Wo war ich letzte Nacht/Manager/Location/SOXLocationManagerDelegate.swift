@@ -13,6 +13,8 @@ import CoreLocation
 // MARK: - Protocol
 protocol SOXLocationManagerDelegate: Any {
     func didUpdateLocation(_ location:CLLocation?)
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit)
+
 }
 
 
@@ -22,6 +24,11 @@ extension SOXLocationManagerDelegate {
     func didUpdateLocation(_ location:CLLocation?) {
         fatalError("Needs to be implemented in concrete subclass.")
     }
+    
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit)  {
+        fatalError("Needs to be implemented in concrete subclass.")
+    }
+
 }
 
 
