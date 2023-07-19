@@ -70,7 +70,7 @@ class LocationsViewController: UIViewController {
     }
     
     private func setupDatasourceManager() {
-        datasourceManager = SOXWatchDogFRC.manager(withEntityForName: "Location",
+        datasourceManager = SOXWatchDogFRC.manager(withEntityForName: TrackedLocation.entityName(),
                                                    delegate: self,
                                                    name: "watchdog for locations")
         
@@ -79,7 +79,7 @@ class LocationsViewController: UIViewController {
     //MARK: - Map Methods
     private func updateMap() {
         print("updateMap")
-        guard let allLocations = datasourceManager?.fetchedObjects() as? [Location] else {
+        guard let allLocations = datasourceManager?.fetchedObjects() as? [TrackedLocation] else {
             fatalError() }
         
         var newAnnotations: [SimpleAnnotation] = []

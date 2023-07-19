@@ -32,13 +32,15 @@ private extension CoreDataLocationManager {
         
         SOXCoreDatabase.performAndSaveInUIEditContext(
             workingBlock:  { context in
-                let newLocation = Location(context: context)
+                let newLocation = TrackedLocation(context: context)
                 newLocation.latitude = location.coordinate.latitude
                 newLocation.longitude = location.coordinate.longitude
                 newLocation.timeStamp = Date()
             },
             completionBlock: {
                 print("did add a new CoreData.Location")
+                let allLocations = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedLocation.self)
+                print("now: \(allLocations.count)")
             })
     }
     
