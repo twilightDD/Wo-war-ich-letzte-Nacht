@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EBQ-jE-NiT">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -40,7 +41,7 @@
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="bottom" secondItem="YKn-aY-sV5" secondAttribute="bottom" id="eBa-9f-ijh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Locations" id="UcR-SQ-Szh"/>
+                    <tabBarItem key="tabBarItem" title="Locations" selectedImage="map" catalog="system" id="UcR-SQ-Szh"/>
                     <connections>
                         <outlet property="mapView" destination="YKn-aY-sV5" id="JYJ-lX-vJ5"/>
                     </connections>
@@ -59,7 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="el6-M0-PAS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="1X3-4z-J1m"/>
+                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="gear" catalog="system" id="1X3-4z-J1m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blt-ea-Ftu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +70,7 @@
         <scene sceneID="N5P-Kj-8Jk">
             <objects>
                 <tabBarController id="EBQ-jE-NiT" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oks-sN-R4h">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oks-sN-R4h" userLabel="Ich">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,6 +86,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

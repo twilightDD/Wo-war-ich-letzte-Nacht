@@ -13,7 +13,7 @@ import CoreLocation
 //MARK: - LocationManager
 class SOXLocationManager: NSObject {
     //MARK: Lets and Vars
-    private (set) var latestLocation:CLLocation?
+    private (set) var latestLocation: CLLocation?
     
     //MARK: Private Lets and Vars
     private static let shared = SOXLocationManager()
@@ -33,6 +33,8 @@ class SOXLocationManager: NSObject {
             locationManager.delegate = self
             
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.showsBackgroundLocationIndicator = true
             
             return locationManager
     }
@@ -90,7 +92,7 @@ class SOXLocationManager: NSObject {
         trackingDelegates.add(delegate)
         
         locationManager.startUpdatingLocation()
-         print("LocationManager.startUpdatingLocation: registerForLocationTracking")
+         print("LocationManager.registerForLocationTracking: startUpdatingLocation")
     }
     
     private func unRegisterForLocationTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
@@ -100,6 +102,7 @@ class SOXLocationManager: NSObject {
         
         if trackingDelegates.count < 1 {
             locationManager.stopUpdatingLocation()
+            print("LocationManager.unRegisterForLocationTracking: stopUpdatingLocation")
         }
     }
     

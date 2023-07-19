@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D03298292A67F8A100FA787A /* SOXWatchDogFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298262A67F8A100FA787A /* SOXWatchDogFRC.swift */; };
+		D032982A2A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298272A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift */; };
+		D032982B2A67F8A100FA787A /* SOXAbstractDatasourceFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298282A67F8A100FA787A /* SOXAbstractDatasourceFRC.swift */; };
+		D032982D2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032982C2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift */; };
+		D03298302A67FC8C00FA787A /* SimpleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D032982F2A67FC8C00FA787A /* SimpleAnnotation.swift */; };
+		D03298322A6828A800FA787A /* SOXDatasourceManagerCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03298312A6828A700FA787A /* SOXDatasourceManagerCellProtocol.swift */; };
 		D0C3D0C22A62E5B1003FA2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */; };
 		D0C3D0C42A62E5B1003FA2C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */; };
 		D0C3D0C62A62E5B1003FA2C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C52A62E5B1003FA2C9 /* ViewController.swift */; };
@@ -63,6 +69,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D03298262A67F8A100FA787A /* SOXWatchDogFRC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXWatchDogFRC.swift; sourceTree = "<group>"; };
+		D03298272A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXTableViewDatasourceFRC.swift; sourceTree = "<group>"; };
+		D03298282A67F8A100FA787A /* SOXAbstractDatasourceFRC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXAbstractDatasourceFRC.swift; sourceTree = "<group>"; };
+		D032982C2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXDatasourceManagerDelegate.swift; sourceTree = "<group>"; };
+		D032982F2A67FC8C00FA787A /* SimpleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnnotation.swift; sourceTree = "<group>"; };
+		D03298312A6828A700FA787A /* SOXDatasourceManagerCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXDatasourceManagerCellProtocol.swift; sourceTree = "<group>"; };
 		D0C3D0BE2A62E5B1003FA2C9 /* Wo war ich letzte Nacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wo war ich letzte Nacht.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D032982E2A67FC7F00FA787A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D032982F2A67FC8C00FA787A /* SimpleAnnotation.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		D0C3D0B52A62E5B1003FA2C9 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +210,11 @@
 			children = (
 				D0C3D1042A6401DB003FA2C9 /* SOXCoreDatabase.swift */,
 				D0C3D1062A6402C8003FA2C9 /* SOXManagedObject.swift */,
+				D03298282A67F8A100FA787A /* SOXAbstractDatasourceFRC.swift */,
+				D03298272A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift */,
+				D032982C2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift */,
+				D03298312A6828A700FA787A /* SOXDatasourceManagerCellProtocol.swift */,
+				D03298262A67F8A100FA787A /* SOXWatchDogFRC.swift */,
 				D0C3D1082A6402ED003FA2C9 /* Extensions */,
 				D0C3D0CA2A62E5B1003FA2C9 /* Wo_war_ich_letzte_Nacht.xcdatamodeld */,
 				D0C3D0F62A63FD81003FA2C9 /* Entity Categories */,
@@ -215,6 +240,7 @@
 		D0C3D0F72A63FDA1003FA2C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D032982E2A67FC7F00FA787A /* Map */,
 				D0C3D0FD2A63FE6C003FA2C9 /* LocationsViewController.swift */,
 				D0C3D0F92A63FE48003FA2C9 /* SettingsMainViewController.swift */,
 			);
@@ -403,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D032982D2A67F91000FA787A /* SOXDatasourceManagerDelegate.swift in Sources */,
 				D0C3D0C62A62E5B1003FA2C9 /* ViewController.swift in Sources */,
 				D0C3D11C2A6402EE003FA2C9 /* NSManagedObjectContext+Statistics.swift in Sources */,
 				D0C3D1252A6403B0003FA2C9 /* UIApplication+Helper.swift in Sources */,
@@ -412,11 +439,14 @@
 				D0C3D0CC2A62E5B1003FA2C9 /* Wo_war_ich_letzte_Nacht.xcdatamodeld in Sources */,
 				D0C3D11D2A6402EE003FA2C9 /* NSManagedObjectContext+Filters.swift in Sources */,
 				D0C3D1192A6402EE003FA2C9 /* NSManagedObject+Forget.swift in Sources */,
+				D03298292A67F8A100FA787A /* SOXWatchDogFRC.swift in Sources */,
 				D0C3D0C42A62E5B1003FA2C9 /* SceneDelegate.swift in Sources */,
+				D032982B2A67F8A100FA787A /* SOXAbstractDatasourceFRC.swift in Sources */,
 				D0C3D1202A6402EE003FA2C9 /* NSManagedObject+Convenients.swift in Sources */,
 				D0C3D1182A6402EE003FA2C9 /* NSManagedObjectContext+FetchMethods.swift in Sources */,
 				D0C3D1312A640AB7003FA2C9 /* SOXFileManager.swift in Sources */,
 				D0C3D1012A63FEEE003FA2C9 /* SOXLocationManagerDelegate.swift in Sources */,
+				D03298302A67FC8C00FA787A /* SimpleAnnotation.swift in Sources */,
 				D0C3D12F2A640425003FA2C9 /* Collection+Convenice.swift in Sources */,
 				D0C3D1052A6401DB003FA2C9 /* SOXCoreDatabase.swift in Sources */,
 				D0C3D1072A6402C8003FA2C9 /* SOXManagedObject.swift in Sources */,
@@ -430,7 +460,9 @@
 				D0C3D12D2A6403FB003FA2C9 /* String+Lenght.swift in Sources */,
 				D0C3D0FE2A63FE6C003FA2C9 /* LocationsViewController.swift in Sources */,
 				D0C3D1222A6402EE003FA2C9 /* NSManagedObject+Debugging.swift in Sources */,
+				D03298322A6828A800FA787A /* SOXDatasourceManagerCellProtocol.swift in Sources */,
 				D0C3D11A2A6402EE003FA2C9 /* NSManagedObject+DeepCopy.swift in Sources */,
+				D032982A2A67F8A100FA787A /* SOXTableViewDatasourceFRC.swift in Sources */,
 				D0C3D1272A6403CB003FA2C9 /* SOXErrorManager.swift in Sources */,
 				D0C3D11B2A6402EE003FA2C9 /* NSManagedObjectContext+Perform.swift in Sources */,
 			);
@@ -538,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -592,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -613,6 +645,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wo war ich letzte Nacht/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Ja wo nur?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -645,6 +680,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wo war ich letzte Nacht/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Ja wo nur?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Damit es klappt, muss die App \"Immer\" Zugriff auf die Location haben!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
