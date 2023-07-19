@@ -11,7 +11,7 @@ import UIKit
 import CoreLocation
 
 // MARK: - Protocol
-protocol SOXLocationManagerDelegate:Any {
+protocol SOXLocationManagerDelegate: Any {
     func didUpdateLocation(_ location:CLLocation?)
 }
 

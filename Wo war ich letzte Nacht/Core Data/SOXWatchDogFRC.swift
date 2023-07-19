@@ -35,6 +35,7 @@ class SOXWatchDogFRC: SOXTableViewDatasourceFRC {
                                               managedObjectContext: context,
                                               delegate: delegate,
                                               predicate: predicate)
+        manager.name = name
         
         return manager
     }

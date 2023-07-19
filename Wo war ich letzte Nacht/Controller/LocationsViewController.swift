@@ -78,6 +78,7 @@ class LocationsViewController: UIViewController {
     
     //MARK: - Map Methods
     private func updateMap() {
+        print("updateMap")
         guard let allLocations = datasourceManager?.fetchedObjects() as? [Location] else {
             fatalError() }
         
@@ -109,7 +110,7 @@ extension LocationsViewController: SOXDatasourceManagerDelegate {
     func controllerDidChangeContent(_ datasourceManager: SOXAbstractDatasourceFRC) {
         
         if datasourceManager == self.datasourceManager {
-            
+            updateMap()
         }
         
     }
