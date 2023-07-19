@@ -246,8 +246,8 @@
 		D0C3D0F62A63FD81003FA2C9 /* Entity Categories */ = {
 			isa = PBXGroup;
 			children = (
-				D032983E2A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift */,
 				D03298402A683AC600FA787A /* TrackedLocation+CoreDataProperties.swift */,
+				D032983E2A683AC600FA787A /* TrackedPlace+CoreDataProperties.swift */,
 			);
 			path = "Entity Categories";
 			sourceTree = "<group>";

@@ -16,6 +16,8 @@ extension TrackedPlace {
         return NSFetchRequest<TrackedPlace>(entityName: "TrackedPlace")
     }
 
+    @NSManaged public var uuid: UUID
+    
     @NSManaged public var address: String?
     @NSManaged public var trackedLocations: TrackedLocation?
 
