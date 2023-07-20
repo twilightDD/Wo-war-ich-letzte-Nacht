@@ -29,16 +29,16 @@ class SOXLocationManager: NSObject {
     
     //MARK: - Setup Methods
     private func setupLocationManager()
-        -> CLLocationManager {
-            let locationManager = CLLocationManager()
-            locationManager.delegate = self
-            
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.showsBackgroundLocationIndicator = true
-            locationManager.activityType = .other
-            
-            return locationManager
+    -> CLLocationManager {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.showsBackgroundLocationIndicator = true
+        locationManager.activityType = .other
+        
+        return locationManager
     }
     
     
@@ -49,7 +49,7 @@ class SOXLocationManager: NSObject {
     }
     
     
-   
+    
     
     @discardableResult
     class func stopUpdatingLocation(force: Bool)
@@ -83,9 +83,9 @@ class SOXLocationManager: NSObject {
     
     
     class func latestLocation()
-        -> CLLocation? {
-            let latestLocation = SOXLocationManager.shared.latestLocation
-            return latestLocation
+    -> CLLocation? {
+        let latestLocation = SOXLocationManager.shared.latestLocation
+        return latestLocation
     }
     
     class func registerForLocationTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
@@ -113,17 +113,17 @@ class SOXLocationManager: NSObject {
     private func registerForLocationTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
         //func startLocationTracking(target delegate:SOXLocationManagerDelegate) {
         guard let delegate = delegate as? NSObject
-            else { fatalError("Must be an NSObject") }
+        else { fatalError("Must be an NSObject") }
         
         trackingDelegates.add(delegate)
         
         locationManager.startUpdatingLocation()
-         print("LocationManager.registerForLocationTracking: startUpdatingLocation")
+        print("LocationManager.registerForLocationTracking: startUpdatingLocation")
     }
     
     private func unRegisterForLocationTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
         guard let delegate = delegate as? NSObject
-            else { fatalError("Must be an NSObject") }
+        else { fatalError("Must be an NSObject") }
         trackingDelegates.remove(delegate)
         
         if trackingDelegates.count < 1 {
@@ -133,7 +133,7 @@ class SOXLocationManager: NSObject {
     }
     
     private func registerForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
-       
+        
         guard let delegate = delegate as? NSObject else {
             fatalError("Must be an NSObject") }
         
@@ -155,7 +155,7 @@ class SOXLocationManager: NSObject {
     
     private func requestLocation<T: SOXLocationManagerDelegate>(target delegate:T) {
         guard let delegate = delegate as? NSObject
-            else { fatalError("Must be an NSObject") }
+        else { fatalError("Must be an NSObject") }
         requestDelegates.add(delegate)
         
         locationManager.requestLocation()
@@ -168,22 +168,22 @@ extension SOXLocationManager:CLLocationManagerDelegate {
     internal func locationManager(_ manager: CLLocationManager,
                                   didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .authorizedAlways:
-            // fine!
-            break
-        case .authorizedWhenInUse:
-            // fine!
-            break
-        case .denied:
-            // Show alert instructing them how to turn on permissions
-            break
-        case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
-        case .restricted:
-            // user may not change it (i.e. parental limitations)
-            break
-        default:
-            break
+            case .authorizedAlways:
+                // fine!
+                break
+            case .authorizedWhenInUse:
+                // fine!
+                break
+            case .denied:
+                // Show alert instructing them how to turn on permissions
+                break
+            case .notDetermined:
+                locationManager.requestAlwaysAuthorization()
+            case .restricted:
+                // user may not change it (i.e. parental limitations)
+                break
+            default:
+                break
         }
     }
     
@@ -191,7 +191,7 @@ extension SOXLocationManager:CLLocationManagerDelegate {
     internal func locationManager(_ manager: CLLocationManager,
                                   didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.first
-            else { return }
+        else { return }
         print("LocationManager.didUpdateLocations: \(currentLocation)")
         // Memorize latest location
         latestLocation = currentLocation
@@ -200,7 +200,7 @@ extension SOXLocationManager:CLLocationManagerDelegate {
         // Tracking
         for trackingDelegate in trackingDelegates.allObjects {
             guard let trackingDelegate = trackingDelegate as? SOXLocationManagerDelegate
-                else { fatalError() }
+            else { fatalError() }
             
             trackingDelegate.didUpdateLocation(currentLocation)
         }
@@ -208,7 +208,7 @@ extension SOXLocationManager:CLLocationManagerDelegate {
         // Request
         for requestDelegate in requestDelegates.allObjects {
             guard let requestDelegate = requestDelegate as? SOXLocationManagerDelegate
-                else { fatalError() }
+            else { fatalError() }
             
             requestDelegate.didUpdateLocation(currentLocation)
         }
