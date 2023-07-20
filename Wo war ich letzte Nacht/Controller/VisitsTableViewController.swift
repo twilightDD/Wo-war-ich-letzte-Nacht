@@ -24,6 +24,7 @@ class VisitsTableViewController: UITableViewController {
       
         tableView.register(VisitTableViewCell.nib(), forCellReuseIdentifier: VisitTableViewCell.reuseIdentifier())
         
+        setupUI()
        
     }
     
@@ -35,6 +36,12 @@ class VisitsTableViewController: UITableViewController {
     
     
     //MARK: - Setup Methods
+    private func setupUI() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(callPullToRefresh), for: .valueChanged)
+    }
+    
+    
     private func setupDatasource() {
         let allVisits = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self,
                                                                        sortByKeypath: TrackedVisit.Attributes.arrivalDate)
@@ -59,6 +66,7 @@ class VisitsTableViewController: UITableViewController {
     }
     
     
+    //MARK: - Private Methods
     private func retrieveGeocodedPlacemarks() async {
         let geoCoder = CLGeocoder()
         let editContext = SOXCoreDatabase.newEditContext(forUI: true)
@@ -82,6 +90,17 @@ class VisitsTableViewController: UITableViewController {
             catch let geoCoderError {
                 print(geoCoderError.localizedDescription)
             }
+        }
+        
+        callPullToRefresh()
+    }
+    
+    @objc
+    private func callPullToRefresh(){
+        updateUI()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
         }
     }
     
@@ -125,13 +144,21 @@ extension VisitsTableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        let selectedVisit = visits[indexPath.row]
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            SOXCoreDatabase.performAndSaveInUIEditContext(
+                workingBlock: { context in
+                    let visitInContext = selectedVisit.getIn(context: context)
+                    visitInContext.forget()
+            }, completionBlock: { [weak self] in
+                self?.updateUI()
+            })
+            
+            
+        }
     }
     
 
