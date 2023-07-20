@@ -233,6 +233,17 @@ extension SOXLocationManager:CLLocationManagerDelegate {
             
             visitsDelegate.locationManager(manager, didVisit: visit)
         })
+        
+        // Local Notification
+        let content = UNMutableNotificationContent()
+        content.title = "New Visit 📌"
+        content.body = "Arrival: \(visit.arrivalDate)"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: visit.arrivalDate.description,
+                                            content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     internal func locationManager(_ manager: CLLocationManager,

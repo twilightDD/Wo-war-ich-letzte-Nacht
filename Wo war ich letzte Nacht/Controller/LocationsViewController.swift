@@ -91,15 +91,31 @@ class LocationsViewController: UIViewController {
                                         latitude: currentCoordinates.latitude,
                                                   longitude: currentCoordinates.longitude)
             }, completionBlock:  { [weak self] in
-                let title = newTrackedVisit != nil ? "Ein neuer Visit wurde gespeichert" : "Ein Fehler ist aufgetreten"
-                let message  = newTrackedVisit != nil ? nil : "Es konnte kein Visit gespeichert werden"
-                let alertView = UIAlertController(title: title,
-                                                  message: message,
-                                                  preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Okay",
-                                                  style: .default))
                 
-                self?.present(alertView, animated: true)
+                if let newTrackedVisit,
+                   let arrivalDate = newTrackedVisit.arrivalDate {
+                    // Local Notification
+                    let content = UNMutableNotificationContent()
+                    content.title = "Manual Visit added 📌"
+                    content.body = "Arrival: \(SOXDateFormatter.dayMonthYearStringFor(date: arrivalDate))"
+                    content.sound = UNNotificationSound.default
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    let request = UNNotificationRequest(identifier: arrivalDate.description,
+                                                        content: content, trigger: trigger)
+                    
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                }
+                else {
+                    let title = "An error occured."
+                    let message  = "Could not create a Visit."
+                    let alertView = UIAlertController(title: title,
+                                                      message: message,
+                                                      preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Okay",
+                                                      style: .default))
+                    
+                    self?.present(alertView, animated: true)
+                }
             })
     }
     
