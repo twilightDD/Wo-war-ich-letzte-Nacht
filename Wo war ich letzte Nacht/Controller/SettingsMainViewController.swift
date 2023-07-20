@@ -38,7 +38,7 @@ class SettingsMainViewController: UIViewController {
         CoreDataLocationManager.stopMonitoringVisits()
     }
     
-    
+
     @IBAction func deleteLocationStoreButtonAction(_ sender: UIButton) {
         let alertView = UIAlertController.init(title: "Sollen alle Visits gelöscht werden?",
                                                message: nil,

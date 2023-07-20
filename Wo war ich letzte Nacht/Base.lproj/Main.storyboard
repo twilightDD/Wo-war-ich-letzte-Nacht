@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wo war ich letzte Nacht?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-oh-8Yc">
-                                <rect key="frame" x="16" y="58.999999999999993" width="361" height="28.666666666666664"/>
+                                <rect key="frame" x="16" y="58.999999999999993" width="314" height="28.666666666666664"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -28,6 +28,18 @@
                                 <rect key="frame" x="0.0" y="96" width="403" height="673"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1C-Z3-urV">
+                                <rect key="frame" x="338" y="59" width="45" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="6LY-rS-faQ"/>
+                                    <constraint firstAttribute="height" constant="29" id="T89-0I-FtF"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="addCurrentLocationButtonAction:" destination="mwB-dF-8h6" eventType="touchUpInside" id="vuP-QG-ePS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oxf-Il-Ch7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -35,39 +47,32 @@
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="top" secondItem="Oxf-Il-Ch7" secondAttribute="top" id="2vk-JC-5Cl"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="top" secondItem="P1R-oh-8Yc" secondAttribute="bottom" constant="8.3333333333333428" id="5Ip-Wb-otJ"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="trailing" secondItem="Oxf-Il-Ch7" secondAttribute="trailing" constant="10" id="6uF-vw-gcS"/>
+                            <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="W1C-Z3-urV" secondAttribute="trailing" constant="10" id="Hdp-Tb-CRH"/>
+                            <constraint firstItem="W1C-Z3-urV" firstAttribute="leading" secondItem="P1R-oh-8Yc" secondAttribute="trailing" constant="8" symbolic="YES" id="K6b-N5-xH3"/>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" constant="16" id="Si1-Zo-SSo"/>
-                            <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="P1R-oh-8Yc" secondAttribute="trailing" constant="16" id="UV8-TD-DKw"/>
+                            <constraint firstItem="P1R-oh-8Yc" firstAttribute="centerY" secondItem="W1C-Z3-urV" secondAttribute="centerY" id="USr-J7-7ju"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" id="dSJ-TO-QrP"/>
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="bottom" secondItem="YKn-aY-sV5" secondAttribute="bottom" id="eBa-9f-ijh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Locations" image="map" catalog="system" selectedImage="map" id="UcR-SQ-Szh"/>
                     <connections>
+                        <outlet property="addCurrentLocationButton" destination="W1C-Z3-urV" id="fVf-GZ-s6O"/>
                         <outlet property="mapView" destination="YKn-aY-sV5" id="JYJ-lX-vJ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgU-oh-0hv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="-454"/>
+            <point key="canvasLocation" x="504.58015267175568" y="-454.22535211267609"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="vV3-oA-Ohh">
             <objects>
-                <tableViewController id="Ydg-Wi-rbB" sceneMemberID="viewController">
+                <tableViewController id="Ydg-Wi-rbB" customClass="VisitsTableViewController" customModule="Wo_war_ich_letzte_Nacht" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="MhY-cW-xm2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WLa-Eh-Urf">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WLa-Eh-Urf" id="ddp-QD-kfQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Ydg-Wi-rbB" id="zf6-54-wJZ"/>
                             <outlet property="delegate" destination="Ydg-Wi-rbB" id="YLh-9t-F92"/>
@@ -77,7 +82,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xi-yo-sXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="215"/>
+            <point key="canvasLocation" x="325.95419847328242" y="214.78873239436621"/>
         </scene>
         <!--Visits-->
         <scene sceneID="7mR-Xi-4eR">
@@ -181,6 +186,7 @@
         <image name="fireplace" catalog="system" width="128" height="103"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

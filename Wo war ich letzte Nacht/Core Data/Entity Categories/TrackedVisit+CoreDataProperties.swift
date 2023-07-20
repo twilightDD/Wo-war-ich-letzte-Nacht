@@ -22,7 +22,7 @@ extension TrackedVisit {
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var placemark: String?
-    @NSManaged public var uuid: UUID?
+    @NSManaged public var uuid: UUID
 
 }
 

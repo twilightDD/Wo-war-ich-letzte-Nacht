@@ -224,6 +224,16 @@ extension SOXLocationManager:CLLocationManagerDelegate {
         }
     }
     
+    internal func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        print("didVisit: \(visit.arrivalDate)")
+        
+        visitsDelegates.allObjects.forEach( { visitsDelegate in
+            guard let visitsDelegate = visitsDelegate as? SOXLocationManagerDelegate else {
+                fatalError() }
+            
+            visitsDelegate.locationManager(manager, didVisit: visit)
+        })
+    }
     
     internal func locationManager(_ manager: CLLocationManager,
                                   didFailWithError error: Error) {

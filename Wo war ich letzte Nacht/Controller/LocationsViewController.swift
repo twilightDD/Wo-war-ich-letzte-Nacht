@@ -29,10 +29,12 @@ class LocationsViewController: UIViewController {
         }
     }
     
-
+    
     
     
     //MARK: IBOutlets
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var addCurrentLocationButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     
     
@@ -56,7 +58,7 @@ class LocationsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     //MARK: - Setup Methods
@@ -73,10 +75,40 @@ class LocationsViewController: UIViewController {
         datasourceManager = SOXWatchDogFRC.manager(withEntityForName: TrackedLocation.entityName(),
                                                    delegate: self,
                                                    name: "watchdog for locations")
-        
     }
     
-    //MARK: - Map Methods
+    //MARK: - Action Methods
+    @IBAction func addCurrentLocationButtonAction(_ sender: UIButton) {
+        var newTrackedVisit: TrackedVisit?
+        
+        let currentCoordinates = mapView.userLocation.coordinate
+        SOXCoreDatabase.performAndSaveInUIEditContext(
+            workingBlock:  { context in
+            newTrackedVisit = TrackedVisit.insert(inContext: context,
+                                        arrivalDate: Date(),
+                                        departureDate: nil,
+                                        horizontalAccuracy: 0,
+                                        latitude: currentCoordinates.latitude,
+                                                  longitude: currentCoordinates.longitude)
+            }, completionBlock:  { [weak self] in
+                let title = newTrackedVisit != nil ? "Ein neuer Visit wurde gespeichert" : "Ein Fehler ist aufgetreten"
+                let message  = newTrackedVisit != nil ? nil : "Es konnte kein Visit gespeichert werden"
+                let alertView = UIAlertController(title: title,
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Okay",
+                                                  style: .default))
+                
+                self?.present(alertView, animated: true)
+            })
+    }
+    
+}
+
+
+//MARK: - Extension - Map Methods
+extension LocationsViewController {
+    
     private func updateMap() {
         print("updateMap")
         guard let allLocations = datasourceManager?.fetchedObjects() as? [TrackedLocation] else {

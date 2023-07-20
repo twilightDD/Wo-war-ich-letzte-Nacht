@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SOXCoreDatabase.startUp()
         SOXLocationManager.updateLocation()
-        CoreDataLocationManager.start()
+        //CoreDataLocationManager.start()
         
         return true
     }

@@ -33,16 +33,6 @@ class CoreDataLocationManager: NSObject {
     
 }
 
-//MARK: - Extension - Private Methods
-private extension CoreDataLocationManager {
-    
-    private func addNewLocation(_ location: CLLocation) {
-        
-     
-    }
-    
-}
-
 
 //MARK: - Extension - SOXLocationManagerDelegate
 extension CoreDataLocationManager: SOXLocationManagerDelegate {
@@ -72,7 +62,21 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        
+        print("CoreDataLocationManager - didVisit")
+        SOXCoreDatabase.performAndSaveInUIEditContext(
+            workingBlock:  { context in
+                let _ = TrackedVisit.insert(inContext: context,
+                                            arrivalDate: visit.arrivalDate,
+                                            departureDate: visit.departureDate,
+                                            horizontalAccuracy: visit.horizontalAccuracy,
+                                            latitude: visit.coordinate.latitude,
+                                            longitude: visit.coordinate.longitude)
+                
+            },
+            completionBlock: {
+                let allTrackedVisits = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self)
+                print("did add a new CoreData.TrackedVisit. now: \(allTrackedVisits.count)")
+            })
     }
     
 }
