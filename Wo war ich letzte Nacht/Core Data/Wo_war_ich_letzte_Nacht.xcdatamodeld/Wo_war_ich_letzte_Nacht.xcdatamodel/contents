@@ -14,6 +14,7 @@
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="placemark" optional="YES" attributeType="String"/>
+        <attribute name="pointOfInterest" optional="YES" attributeType="String"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
 </model>

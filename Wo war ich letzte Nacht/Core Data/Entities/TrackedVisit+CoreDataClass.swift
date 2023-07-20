@@ -15,6 +15,9 @@ public class TrackedVisit: SOXManagedObject {
 
     typealias CompletionBlock = () -> ()
     
+    var datesDescription: String { datesDescriptionMethod() }
+    
+    
     static func insert(inContext context: NSManagedObjectContext,
                        arrivalDate: Date?,
                        departureDate: Date?,
@@ -51,9 +54,11 @@ public class TrackedVisit: SOXManagedObject {
         if let areasOfInterest,
             let firstAOI = areasOfInterest.first {
             placemarkElements.append(firstAOI)
+            pointOfInterest = firstAOI
         }
         else if let name {
             placemarkElements.append(name)
+            pointOfInterest = name
         }
         
         // Street + Number - may be same as "name". If so, don't add it
@@ -84,6 +89,26 @@ public class TrackedVisit: SOXManagedObject {
                     completionBlock?()
                 })
         }
+    }
+    
+    
+    
+    private func datesDescriptionMethod()
+    -> String {
+        var datesDescriptionElements: [String] = []
+        
+        if let arrivalDate {
+            datesDescriptionElements.append(SOXDateFormatter.dayMonthYearHourMinutesStringFor(date: arrivalDate))
+        }
+        
+        datesDescriptionElements.append(" - ")
+        
+        if let departureDate {
+            datesDescriptionElements.append(SOXDateFormatter.dayMonthYearHourMinutesStringFor(date: departureDate))
+        }
+        
+        let datesDescription = datesDescriptionElements.joined(separator: "")
+        return datesDescription
     }
     
 }
