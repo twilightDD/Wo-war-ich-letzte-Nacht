@@ -78,7 +78,16 @@
                             <outlet property="delegate" destination="Ydg-Wi-rbB" id="YLh-9t-F92"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="h5U-Rw-Z0L"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="h5U-Rw-Z0L">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="mappin.circle" catalog="system" id="x6j-8R-lRv">
+                            <connections>
+                                <action selector="retrieveGeocodedPlacemarksAction:" destination="Ydg-Wi-rbB" id="HLs-ci-acB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="retrieveGeocodedPlacemarks" destination="x6j-8R-lRv" id="LwY-1p-q0V"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xi-yo-sXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,6 +195,7 @@
         <image name="fireplace" catalog="system" width="128" height="103"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="map" catalog="system" width="128" height="112"/>
+        <image name="mappin.circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 @objc(TrackedVisit)
 public class TrackedVisit: SOXManagedObject {
@@ -29,6 +30,54 @@ public class TrackedVisit: SOXManagedObject {
         newTrackedVisit.longitude = longitude
         
         return newTrackedVisit
+    }
+    
+    /// Updates visit object and saves it in context
+    func updateAndSaveWith(placemark: CLPlacemark,
+                           inContext context: NSManagedObjectContext = SOXCoreDatabase.newEditContext(forUI: true)) {
+        
+        
+        var placemarkElements: [String] = []
+        
+        let areasOfInterest = placemark.areasOfInterest     // AOIs
+        let name = placemark.name                           // Name or Street+Number
+        let thoroughfare = placemark.thoroughfare           // Street
+        let subThoroughfare = placemark.subThoroughfare     // Number
+        let locality = placemark.locality                   // City
+        
+        // Area Of Interest or "Name"
+        if let areasOfInterest,
+            let firstAOI = areasOfInterest.first {
+            placemarkElements.append(firstAOI)
+        }
+        else if let name {
+            placemarkElements.append(name)
+        }
+        
+        // Street + Number - may be same as "name". If so, don't add it
+        if let thoroughfare {
+            if let subThoroughfare {
+                let streetAndNumber = thoroughfare + " " + subThoroughfare
+                if let name,
+                   name != streetAndNumber {
+                    placemarkElements.append(streetAndNumber)
+                }
+            }
+        }
+        
+        if let locality {
+            placemarkElements.append(locality)
+        }
+        
+        let placemarkString = placemarkElements.joined(separator: ", ")
+      
+        
+        if placemarkString.count > 0 {
+            context.performAndSave { [weak self] context in
+                let visitInContext = self?.getIn(context: context)
+                visitInContext?.placemark = placemarkString
+            }
+        }
     }
     
 }

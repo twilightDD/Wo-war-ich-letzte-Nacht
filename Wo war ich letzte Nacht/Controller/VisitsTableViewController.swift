@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import CoreLocation
 
 //MARK: - VisitsTableViewController
 class VisitsTableViewController: UITableViewController {
     
     //MARK: - Lets and Vars
     private var visits: [TrackedVisit] = []
+    
+    //MARK: - IBOutlets
+    @IBOutlet var retrieveGeocodedPlacemarks: UIBarButtonItem!
     
     
     //MARK: - Init&Co.
@@ -26,10 +30,7 @@ class VisitsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupDatasource()
-        title = "\(visits.count) Visits"
-        
-        tableView.reloadData()
+        updateUI()
     }
     
     
@@ -40,6 +41,48 @@ class VisitsTableViewController: UITableViewController {
         visits = allVisits
         
     }
+    
+    private func updateUI() {
+        setupDatasource()
+        title = "\(visits.count) Visits"
+        
+        tableView.reloadData()
+    }
+    
+    
+    //MARK: - Action Methods
+    @IBAction func retrieveGeocodedPlacemarksAction(_ sender: UIBarButtonItem) {
+        print("retrieveGeocodedPlacemarksAction")
+        let geoCoder = CLGeocoder()
+        
+        let editContext = SOXCoreDatabase.newEditContext(forUI: true)
+        visits.forEach( { visit in
+            if visit.placemark != nil {
+                return
+            }
+            print("next visit")
+            let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
+            print("clLocation \(clLocation)")
+            // Get location description
+            geoCoder.reverseGeocodeLocation(clLocation,
+                                            preferredLocale: Locale.current,
+                                            completionHandler: { placemarks, error in
+                if let error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                if let placemark = placemarks?.first {
+                    visit.updateAndSaveWith(placemark: placemark, inContext: editContext)
+                }
+                else {
+                    print("No placemark.")
+                }
+                
+            })
+        })
+    }
+    
 }
 
 
