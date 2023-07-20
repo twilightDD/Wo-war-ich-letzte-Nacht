@@ -42,6 +42,7 @@ class VisitsTableViewController: UITableViewController {
         
     }
     
+    
     private func updateUI() {
         setupDatasource()
         title = "\(visits.count) Visits"
@@ -52,35 +53,36 @@ class VisitsTableViewController: UITableViewController {
     
     //MARK: - Action Methods
     @IBAction func retrieveGeocodedPlacemarksAction(_ sender: UIBarButtonItem) {
-        print("retrieveGeocodedPlacemarksAction")
+        Task { @MainActor in
+            await retrieveGeocodedPlacemarks()
+        }
+    }
+    
+    
+    private func retrieveGeocodedPlacemarks() async {
         let geoCoder = CLGeocoder()
-        
         let editContext = SOXCoreDatabase.newEditContext(forUI: true)
-        visits.forEach( { visit in
-            if visit.placemark != nil {
-                return
-            }
-            print("next visit")
+        
+        for visit in visits {
             let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
-            print("clLocation \(clLocation)")
-            // Get location description
-            geoCoder.reverseGeocodeLocation(clLocation,
-                                            preferredLocale: Locale.current,
-                                            completionHandler: { placemarks, error in
-                if let error {
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                if let placemark = placemarks?.first {
-                    visit.updateAndSaveWith(placemark: placemark, inContext: editContext)
+            
+            do {
+                let placemarks = try await geoCoder.reverseGeocodeLocation(clLocation)
+                if let placemark = placemarks.first {
+                    visit.updateAndSaveWith(placemark: placemark,
+                                            inContext: editContext,
+                                            completionBlock: { [weak self] in
+                        self?.updateUI()
+                    })
                 }
                 else {
-                    print("No placemark.")
+                    print("no placemarks for \(visit.uuid.uuidString)")
                 }
-                
-            })
-        })
+            }
+            catch let geoCoderError {
+                print(geoCoderError.localizedDescription)
+            }
+        }
     }
     
 }

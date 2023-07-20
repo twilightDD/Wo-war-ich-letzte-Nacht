@@ -13,6 +13,7 @@ import CoreLocation
 @objc(TrackedVisit)
 public class TrackedVisit: SOXManagedObject {
 
+    typealias CompletionBlock = () -> ()
     
     static func insert(inContext context: NSManagedObjectContext,
                        arrivalDate: Date?,
@@ -34,7 +35,8 @@ public class TrackedVisit: SOXManagedObject {
     
     /// Updates visit object and saves it in context
     func updateAndSaveWith(placemark: CLPlacemark,
-                           inContext context: NSManagedObjectContext = SOXCoreDatabase.newEditContext(forUI: true)) {
+                           inContext context: NSManagedObjectContext = SOXCoreDatabase.newEditContext(forUI: true),
+                           completionBlock: CompletionBlock? = nil) {
         
         
         var placemarkElements: [String] = []
@@ -73,10 +75,14 @@ public class TrackedVisit: SOXManagedObject {
       
         
         if placemarkString.count > 0 {
-            context.performAndSave { [weak self] context in
-                let visitInContext = self?.getIn(context: context)
-                visitInContext?.placemark = placemarkString
-            }
+            context.performAndSave(
+                { [weak self] context in
+                    let visitInContext = self?.getIn(context: context)
+                    visitInContext?.placemark = placemarkString
+                },
+                completionBlock: {
+                    completionBlock?()
+                })
         }
     }
     
