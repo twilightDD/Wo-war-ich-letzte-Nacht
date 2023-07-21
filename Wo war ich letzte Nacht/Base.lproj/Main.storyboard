@@ -79,6 +79,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="h5U-Rw-Z0L">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="mln-Qd-Rlg">
+                            <connections>
+                                <action selector="shareBarButtonItemAction:" destination="Ydg-Wi-rbB" id="zTa-k0-hgL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="mappin.circle" catalog="system" id="x6j-8R-lRv">
                             <connections>
                                 <action selector="retrieveGeocodedPlacemarksAction:" destination="Ydg-Wi-rbB" id="HLs-ci-acB"/>
@@ -87,6 +92,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="retrieveGeocodedPlacemarks" destination="x6j-8R-lRv" id="LwY-1p-q0V"/>
+                        <outlet property="shareBarButtonItem" destination="mln-Qd-Rlg" id="2nv-Bc-O6K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xi-yo-sXC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

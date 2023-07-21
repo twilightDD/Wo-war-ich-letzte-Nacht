@@ -16,6 +16,7 @@ class VisitsTableViewController: UITableViewController {
     
     //MARK: - IBOutlets
     @IBOutlet var retrieveGeocodedPlacemarks: UIBarButtonItem!
+    @IBOutlet var shareBarButtonItem: UIBarButtonItem!
     
     
     //MARK: - Init&Co.
@@ -59,6 +60,26 @@ class VisitsTableViewController: UITableViewController {
     
     
     //MARK: - Action Methods
+    @IBAction func shareBarButtonItemAction(_ sender: UIBarButtonItem) {
+        let allVisits = SOXCoreDatabase.fetchObjects(forEntityClass: TrackedVisit.self,
+                                                     sortByKeypath: TrackedVisit.Attributes.arrivalDate)
+        let exportDicts = allVisits.map( { $0.exportDictionary() })
+        var jsonString: String!
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: exportDicts,
+                                                      options: .prettyPrinted)
+            jsonString = String(data: jsonData, encoding: .utf8)
+        }
+        catch let jsonError {
+            print(jsonError.localizedDescription)
+            fatalError()
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [jsonString],
+                                                              applicationActivities: nil)
+        present(activityViewController, animated: true)
+    }
+    
     @IBAction func retrieveGeocodedPlacemarksAction(_ sender: UIBarButtonItem) {
         Task { @MainActor in
             await retrieveGeocodedPlacemarks()

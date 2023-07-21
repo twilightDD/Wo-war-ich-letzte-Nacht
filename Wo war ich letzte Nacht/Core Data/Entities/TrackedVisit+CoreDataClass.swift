@@ -91,6 +91,20 @@ public class TrackedVisit: SOXManagedObject {
         }
     }
     
+    func exportDictionary()
+    -> [String: Any] {
+        var exportDictionary: [String : Any] = [ : ]
+        exportDictionary[TrackedVisit.Attributes.arrivalDate] = arrivalDate?.description
+        exportDictionary[TrackedVisit.Attributes.departureDate] = departureDate?.description
+        exportDictionary[TrackedVisit.Attributes.horizontalAccuracy] = horizontalAccuracy
+        exportDictionary[TrackedVisit.Attributes.latitude] = latitude
+        exportDictionary[TrackedVisit.Attributes.longitude] = longitude
+        exportDictionary[TrackedVisit.Attributes.pointOfInterest] = pointOfInterest
+        exportDictionary[TrackedVisit.Attributes.placemark] = placemark
+        exportDictionary[TrackedVisit.Attributes.uuid] = uuid.uuidString
+        
+        return exportDictionary
+    }
     
     
     private func datesDescriptionMethod()
@@ -119,6 +133,13 @@ extension TrackedVisit {
     
     struct Attributes {
         static let arrivalDate = "arrivalDate"
+        static let departureDate = "departureDate"
+        static let horizontalAccuracy = "horizontalAccuracy"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let pointOfInterest = "pointOfInterest"
+        static let placemark = "placemark"
+        static let uuid = "uuid"
     }
     
     struct Relationships {
