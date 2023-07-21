@@ -217,6 +217,7 @@ extension SOXLocationManager:CLLocationManagerDelegate {
         
         // Disable location tracking, if meaningful
         if trackingDelegates.count == 0
+            && visitsDelegates.count == 0
             && countOfLocationUpdates > 4 {
             locationManager.stopUpdatingLocation()
             print("LocationManager: stopUpdatingLocation (trackingDelegates.count: \(trackingDelegates.count), countOfLocationUpdates: \(countOfLocationUpdates)")

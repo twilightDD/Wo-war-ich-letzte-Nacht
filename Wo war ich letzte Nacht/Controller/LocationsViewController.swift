@@ -42,8 +42,8 @@ class LocationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SOXLocationManager.registerForLocationTracking(target: self)
-        
+      //  SOXLocationManager.registerForLocationTracking(target: self)
+       // SOXLocationManager.requestLocation(target: self)
         registerMapAnnotationViews()
         setupUI()
         setupDatasourceManager()
@@ -63,7 +63,7 @@ class LocationsViewController: UIViewController {
     
     //MARK: - Setup Methods
     private func setupUI() {
-        
+        mapView.userTrackingMode = .follow
     }
     
     private func registerMapAnnotationViews() {
@@ -171,7 +171,7 @@ extension LocationsViewController: SOXLocationManagerDelegate {
     func didUpdateLocation(_ location: CLLocation?) {
         if let location {
             centerMapOn(location: location)
-            SOXLocationManager.unRegisterForLocationTracking(target: self)
+            //SOXLocationManager.unRegisterForLocationTracking(target: self)
         }
     }
     
