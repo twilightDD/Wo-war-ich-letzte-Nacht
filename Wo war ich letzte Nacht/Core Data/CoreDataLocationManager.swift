@@ -66,6 +66,7 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
         SOXCoreDatabase.performAndSaveInUIEditContext(
             workingBlock:  { context in
                 let _ = TrackedVisit.insert(inContext: context,
+                                            trackingType: .visit,
                                             arrivalDate: visit.arrivalDate,
                                             departureDate: visit.departureDate,
                                             horizontalAccuracy: visit.horizontalAccuracy,

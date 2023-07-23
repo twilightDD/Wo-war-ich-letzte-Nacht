@@ -19,6 +19,7 @@ public class TrackedVisit: SOXManagedObject {
     
     
     static func insert(inContext context: NSManagedObjectContext,
+                       trackingType: TrackingType,
                        arrivalDate: Date?,
                        departureDate: Date?,
                        horizontalAccuracy: Double,
@@ -28,10 +29,12 @@ public class TrackedVisit: SOXManagedObject {
         let newTrackedVisit = TrackedVisit(context: context, uuid: UUID())
         
         newTrackedVisit.arrivalDate = arrivalDate
+        newTrackedVisit.creationDate = Date()
         newTrackedVisit.departureDate = departureDate
         newTrackedVisit.horizontalAccuracy = horizontalAccuracy
         newTrackedVisit.latitude = latitude
         newTrackedVisit.longitude = longitude
+        newTrackedVisit.trackingType = trackingType.rawValue
         
         return newTrackedVisit
     }
@@ -107,6 +110,14 @@ public class TrackedVisit: SOXManagedObject {
                 
                 let importedVisit = TrackedVisit(context: editContext, uuid: uuid)
                 // Required attributes
+                var creationDate: Date
+                if let creationDateFromImport = SOXDateFormatter.dateFromRFC(string: importDict[Attributes.creationDate] as? String) {
+                    creationDate = creationDateFromImport
+                }
+                else {
+                    creationDate = Date.distantPast
+                }
+                importedVisit.creationDate = creationDate
                 importedVisit.horizontalAccuracy = horizontalAccuracy
                 importedVisit.latitude = latitude
                 importedVisit.longitude = longitude
@@ -114,6 +125,7 @@ public class TrackedVisit: SOXManagedObject {
                 importedVisit.arrivalDate = SOXDateFormatter.dateFromRFC(string: importDict[Attributes.arrivalDate] as? String)
                 importedVisit.departureDate = SOXDateFormatter.dateFromRFC(string: importDict[Attributes.departureDate] as? String)
                 importedVisit.placemark = importDict[Attributes.placemark] as? String
+                importedVisit.trackingType = importDict[Attributes.trackingType] as? Int ?? 0
                 importedVisit.pointOfInterest = importDict[Attributes.pointOfInterest] as? String
                 
             })
@@ -127,12 +139,14 @@ public class TrackedVisit: SOXManagedObject {
     -> [String: Any] {
         var exportDictionary: [String : Any] = [ : ]
         exportDictionary[TrackedVisit.Attributes.arrivalDate] = SOXDateFormatter.rfcDateStringFromDate(arrivalDate)
+        exportDictionary[TrackedVisit.Attributes.creationDate] = SOXDateFormatter.rfcDateStringFromDate(creationDate)
         exportDictionary[TrackedVisit.Attributes.departureDate] = SOXDateFormatter.rfcDateStringFromDate(departureDate)
         exportDictionary[TrackedVisit.Attributes.horizontalAccuracy] = horizontalAccuracy
         exportDictionary[TrackedVisit.Attributes.latitude] = latitude
         exportDictionary[TrackedVisit.Attributes.longitude] = longitude
         exportDictionary[TrackedVisit.Attributes.pointOfInterest] = pointOfInterest
         exportDictionary[TrackedVisit.Attributes.placemark] = placemark
+        exportDictionary[TrackedVisit.Attributes.trackingType] = trackingType
         exportDictionary[TrackedVisit.Attributes.uuid] = uuid.uuidString
         
         return exportDictionary
@@ -159,18 +173,32 @@ public class TrackedVisit: SOXManagedObject {
     
 }
 
+extension TrackedVisit {
+    
+    enum TrackingType: Int {
+        case unknown = 0
+        case manually
+        case visit
+        case significantChange
+        case permanent
+    }
+    
+}
+
 
 //MARK: - Attributes and Relations
 extension TrackedVisit {
     
     struct Attributes {
         static let arrivalDate = "arrivalDate"
+        static let creationDate = "creationDate"
         static let departureDate = "departureDate"
         static let horizontalAccuracy = "horizontalAccuracy"
         static let latitude = "latitude"
         static let longitude = "longitude"
         static let pointOfInterest = "pointOfInterest"
         static let placemark = "placemark"
+        static let trackingType = "trackingType"
         static let uuid = "uuid"
     }
     

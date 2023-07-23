@@ -9,12 +9,14 @@
     </entity>
     <entity name="TrackedVisit" representedClassName="TrackedVisit" syncable="YES">
         <attribute name="arrivalDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="departureDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="horizontalAccuracy" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="placemark" optional="YES" attributeType="String"/>
         <attribute name="pointOfInterest" optional="YES" attributeType="String"/>
+        <attribute name="trackingType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
 </model>

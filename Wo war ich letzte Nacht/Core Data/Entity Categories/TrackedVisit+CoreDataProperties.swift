@@ -17,12 +17,14 @@ extension TrackedVisit {
     }
 
     @NSManaged public var arrivalDate: Date?
+    @NSManaged public var creationDate: Date
     @NSManaged public var departureDate: Date?
     @NSManaged public var horizontalAccuracy: Double
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var pointOfInterest: String?
     @NSManaged public var placemark: String?
+    @NSManaged public var trackingType: Int
     @NSManaged public var uuid: UUID
 
 }

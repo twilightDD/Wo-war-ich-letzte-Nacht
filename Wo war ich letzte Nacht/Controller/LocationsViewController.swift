@@ -84,12 +84,13 @@ class LocationsViewController: UIViewController {
         let currentCoordinates = mapView.userLocation.coordinate
         SOXCoreDatabase.performAndSaveInUIEditContext(
             workingBlock:  { context in
-            newTrackedVisit = TrackedVisit.insert(inContext: context,
-                                        arrivalDate: Date(),
-                                        departureDate: nil,
-                                        horizontalAccuracy: 0,
-                                        latitude: currentCoordinates.latitude,
-                                                  longitude: currentCoordinates.longitude)
+                newTrackedVisit = TrackedVisit.insert(inContext: context,
+                                                      trackingType: .manually,
+                                                      arrivalDate: Date(),
+                                                      departureDate: nil,
+                                                      horizontalAccuracy: 0,
+                                                      latitude: currentCoordinates.latitude,
+                                                      longitude: currentCoordinates.longitude)
             }, completionBlock:  { [weak self] in
                 
                 if let newTrackedVisit,
