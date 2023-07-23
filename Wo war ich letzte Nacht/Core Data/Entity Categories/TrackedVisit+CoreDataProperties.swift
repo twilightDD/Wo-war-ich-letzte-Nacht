@@ -24,7 +24,7 @@ extension TrackedVisit {
     @NSManaged public var longitude: Double
     @NSManaged public var pointOfInterest: String?
     @NSManaged public var placemark: String?
-    @NSManaged public var trackingType: Int
+    @NSManaged public var trackingType: Int16
     @NSManaged public var uuid: UUID
 
 }

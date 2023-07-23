@@ -7,8 +7,11 @@
 //
 
 import Foundation
+
 import CoreData
+
 import CoreLocation
+import UIKit
 
 @objc(TrackedVisit)
 public class TrackedVisit: SOXManagedObject {
@@ -17,6 +20,11 @@ public class TrackedVisit: SOXManagedObject {
     
     var datesDescription: String { datesDescriptionMethod() }
     
+    var trackingColor: UIColor {
+        let t = TrackedVisit.TrackingType.init(rawValue: self.trackingType) ?? .unknown
+        let color = TrackingType.color(forTrackingType: t)
+        return color
+    }
     
     static func insert(inContext context: NSManagedObjectContext,
                        trackingType: TrackingType,
@@ -125,7 +133,7 @@ public class TrackedVisit: SOXManagedObject {
                 importedVisit.arrivalDate = SOXDateFormatter.dateFromRFC(string: importDict[Attributes.arrivalDate] as? String)
                 importedVisit.departureDate = SOXDateFormatter.dateFromRFC(string: importDict[Attributes.departureDate] as? String)
                 importedVisit.placemark = importDict[Attributes.placemark] as? String
-                importedVisit.trackingType = importDict[Attributes.trackingType] as? Int ?? 0
+                importedVisit.trackingType = importDict[Attributes.trackingType] as? Int16 ?? 0
                 importedVisit.pointOfInterest = importDict[Attributes.pointOfInterest] as? String
                 
             })
@@ -175,12 +183,29 @@ public class TrackedVisit: SOXManagedObject {
 
 extension TrackedVisit {
     
-    enum TrackingType: Int {
+    enum TrackingType: Int16 {
         case unknown = 0
         case manually
         case visit
         case significantChange
         case permanent
+        
+        
+        static func color(forTrackingType type: TrackingType)
+        -> UIColor {
+            switch type {
+                case .unknown:
+                    return .darkGray
+                case .manually:
+                    return .systemGreen
+                case .visit:
+                    return .systemRed
+                case .significantChange:
+                    return .systemOrange
+                case .permanent:
+                    return .systemPurple
+            }
+        }
     }
     
 }

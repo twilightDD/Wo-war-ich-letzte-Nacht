@@ -18,10 +18,15 @@ class SimpleAnnotation: NSObject, MKAnnotation {
     // This property defined by `MKAnnotation` is not required.
     var subtitle: String? = NSLocalizedString("SAN_FRANCISCO_SUBTITLE", comment: "SF annotation")
     
+    var markerTintColor: UIColor
+    
     init(latitude: Double, longitude: Double,
-         title: String? = nil, subtitle: String? = nil) {
+         title: String? = nil, subtitle: String? = nil,
+         markerTintColor: UIColor) {
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.title = title
         self.subtitle = subtitle
+        self.markerTintColor = markerTintColor
     }
+    
 }

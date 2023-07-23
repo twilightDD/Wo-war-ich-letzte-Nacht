@@ -43,7 +43,9 @@ class LocationsViewController: UIViewController {
         super.viewDidLoad()
         
       //  SOXLocationManager.registerForLocationTracking(target: self)
-       // SOXLocationManager.requestLocation(target: self)
+        SOXLocationManager.requestLocation(target: self)
+        
+        mapView.delegate = self
         registerMapAnnotationViews()
         setupUI()
         setupDatasourceManager()
@@ -134,8 +136,10 @@ extension LocationsViewController {
         var newAnnotations: [SimpleAnnotation] = []
         allTrackedVisits.forEach( { visit in
             let annotaion = SimpleAnnotation(latitude: visit.latitude, longitude: visit.longitude,
-                                             title: visit.pointOfInterest,
-                                             subtitle: visit.datesDescription)
+                                             title: visit.placemark,
+                                             subtitle: visit.datesDescription,
+                                             markerTintColor: visit.trackingColor)
+            
             newAnnotations.append(annotaion)
         })
         
@@ -155,6 +159,21 @@ extension LocationsViewController {
 }
 
 
+//MARK: - Extension - MKMapViewDelegate
+extension LocationsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
+        if let simpleAnnotation = annotation as? SimpleAnnotation {
+            annotationView.markerTintColor = simpleAnnotation.markerTintColor
+        }
+        return annotationView
+    }
+    
+}
+
+
+//MARK: - Extension - SOXDatasourceManagerDelegate
 extension LocationsViewController: SOXDatasourceManagerDelegate {
     
     func controllerDidChangeContent(_ datasourceManager: SOXAbstractDatasourceFRC) {
