@@ -79,11 +79,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="h5U-Rw-Z0L">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="mln-Qd-Rlg">
-                            <connections>
-                                <action selector="shareBarButtonItemAction:" destination="Ydg-Wi-rbB" id="zTa-k0-hgL"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="action" id="mln-Qd-Rlg">
+                                <connections>
+                                    <action selector="shareBarButtonItemAction:" destination="Ydg-Wi-rbB" id="zTa-k0-hgL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="square.and.arrow.down" catalog="system" id="VOk-7i-Q1F">
+                                <connections>
+                                    <action selector="importBarButtonItemAction:" destination="Ydg-Wi-rbB" id="f9c-QA-A8n"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="mappin.circle" catalog="system" id="x6j-8R-lRv">
                             <connections>
                                 <action selector="retrieveGeocodedPlacemarksAction:" destination="Ydg-Wi-rbB" id="HLs-ci-acB"/>
@@ -91,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="importBarButtonItem" destination="VOk-7i-Q1F" id="eEZ-bV-ifa"/>
                         <outlet property="retrieveGeocodedPlacemarks" destination="x6j-8R-lRv" id="LwY-1p-q0V"/>
                         <outlet property="shareBarButtonItem" destination="mln-Qd-Rlg" id="2nv-Bc-O6K"/>
                     </connections>
@@ -203,6 +211,7 @@
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="mappin.circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

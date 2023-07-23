@@ -15,8 +15,9 @@ class VisitsTableViewController: UITableViewController {
     private var visits: [TrackedVisit] = []
     
     //MARK: - IBOutlets
-    @IBOutlet var retrieveGeocodedPlacemarks: UIBarButtonItem!
     @IBOutlet var shareBarButtonItem: UIBarButtonItem!
+    @IBOutlet var importBarButtonItem: UIBarButtonItem!
+    @IBOutlet var retrieveGeocodedPlacemarks: UIBarButtonItem!
     
     
     //MARK: - Init&Co.
@@ -78,6 +79,41 @@ class VisitsTableViewController: UITableViewController {
         let activityViewController = UIActivityViewController(activityItems: [jsonString ?? "No data available."],
                                                               applicationActivities: nil)
         present(activityViewController, animated: true)
+    }
+    
+    @IBAction func importBarButtonItemAction(_ sender: UIBarButtonItem) {
+        let alertView = UIAlertController.init(title: "Import", message: nil, preferredStyle: .alert)
+        
+        let textField = UITextField()
+        alertView.addTextField(configurationHandler:  { textField in
+            print("configurationHandler")
+        })
+        
+        alertView.addAction(UIAlertAction.init(title: "Importiere", style: .default, handler:  { [weak self] action in
+            guard let textField = alertView.textFields?.first,
+                  let importText = textField.text,
+                  let importData = importText.data(using: .utf8) else {
+                return }
+            
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: importData) as? [[String : Any]] {
+                    let _ = TrackedVisit.importVisits(jsonDict)
+                    self?.updateUI()
+                }
+                else {
+                    print("IMPORT ERROR")
+                }
+                
+            }
+            catch let jsonError {
+                print(jsonError.localizedDescription)
+            }
+            
+        }))
+        
+        alertView.addAction(UIAlertAction.init(title: "Abbrechen", style: .cancel))
+        
+        present(alertView, animated: true)
     }
     
     @IBAction func retrieveGeocodedPlacemarksAction(_ sender: UIBarButtonItem) {
