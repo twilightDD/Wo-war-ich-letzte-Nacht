@@ -95,13 +95,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kartenmarkierungen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk5-Gz-XFL">
-                                <rect key="frame" x="20" y="86" width="353" height="25.333333333333329"/>
+                                <rect key="frame" x="20" y="30" width="353" height="25.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-RE-ffg">
-                                <rect key="frame" x="20" y="131.33333333333337" width="353" height="198.66666666666663"/>
+                                <rect key="frame" x="20" y="90.333333333333329" width="353" height="239.66666666666669"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R8Q-WA-hsM"/>
@@ -112,9 +112,9 @@
                             <constraint firstItem="R8Q-WA-hsM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yfs-RE-ffg" secondAttribute="bottom" constant="20" id="RUR-cJ-uN7"/>
                             <constraint firstItem="R8Q-WA-hsM" firstAttribute="trailing" secondItem="yfs-RE-ffg" secondAttribute="trailing" constant="20" id="ThJ-rU-Q9w"/>
                             <constraint firstItem="R8Q-WA-hsM" firstAttribute="bottom" secondItem="yfs-RE-ffg" secondAttribute="bottom" constant="512" placeholder="YES" id="ZJU-Ov-Ix8"/>
-                            <constraint firstItem="yfs-RE-ffg" firstAttribute="top" secondItem="Fk5-Gz-XFL" secondAttribute="bottom" constant="20" id="gST-fG-nwT"/>
+                            <constraint firstItem="yfs-RE-ffg" firstAttribute="top" secondItem="Fk5-Gz-XFL" secondAttribute="bottom" constant="35" id="gST-fG-nwT"/>
                             <constraint firstItem="Fk5-Gz-XFL" firstAttribute="leading" secondItem="R8Q-WA-hsM" secondAttribute="leading" constant="20" id="vOL-q2-8Dm"/>
-                            <constraint firstItem="Fk5-Gz-XFL" firstAttribute="top" secondItem="R8Q-WA-hsM" secondAttribute="top" constant="86" id="yAA-ke-RcG"/>
+                            <constraint firstItem="Fk5-Gz-XFL" firstAttribute="top" secondItem="R8Q-WA-hsM" secondAttribute="top" constant="30" id="yAA-ke-RcG"/>
                         </constraints>
                     </view>
                     <connections>
