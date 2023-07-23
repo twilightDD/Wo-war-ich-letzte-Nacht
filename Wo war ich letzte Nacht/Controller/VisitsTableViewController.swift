@@ -75,7 +75,7 @@ class VisitsTableViewController: UITableViewController {
             fatalError()
         }
         
-        let activityViewController = UIActivityViewController(activityItems: [jsonString],
+        let activityViewController = UIActivityViewController(activityItems: [jsonString ?? "No data available."],
                                                               applicationActivities: nil)
         present(activityViewController, animated: true)
     }
