@@ -40,6 +40,18 @@
                                     <action selector="addCurrentLocationButtonAction:" destination="mwB-dF-8h6" eventType="touchUpInside" id="vuP-QG-ePS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-R1-zV6">
+                                <rect key="frame" x="344" y="96" width="49" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Ken-25-FcF"/>
+                                    <constraint firstAttribute="width" constant="49" id="ke8-Xg-GbG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="questionmark.app.fill" catalog="system"/>
+                                <connections>
+                                    <segue destination="wya-FW-vNg" kind="presentation" id="kBw-eh-Ikj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oxf-Il-Ch7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,9 +59,11 @@
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="top" secondItem="Oxf-Il-Ch7" secondAttribute="top" id="2vk-JC-5Cl"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="top" secondItem="P1R-oh-8Yc" secondAttribute="bottom" constant="8.3333333333333428" id="5Ip-Wb-otJ"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="trailing" secondItem="Oxf-Il-Ch7" secondAttribute="trailing" constant="10" id="6uF-vw-gcS"/>
+                            <constraint firstItem="YKn-aY-sV5" firstAttribute="top" secondItem="FnT-R1-zV6" secondAttribute="bottom" constant="-49" id="8K2-aL-w8G"/>
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="W1C-Z3-urV" secondAttribute="trailing" constant="10" id="Hdp-Tb-CRH"/>
                             <constraint firstItem="W1C-Z3-urV" firstAttribute="leading" secondItem="P1R-oh-8Yc" secondAttribute="trailing" constant="8" symbolic="YES" id="K6b-N5-xH3"/>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" constant="16" id="Si1-Zo-SSo"/>
+                            <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="FnT-R1-zV6" secondAttribute="trailing" id="Sr2-O5-qSM"/>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="centerY" secondItem="W1C-Z3-urV" secondAttribute="centerY" id="USr-J7-7ju"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" id="dSJ-TO-QrP"/>
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="bottom" secondItem="YKn-aY-sV5" secondAttribute="bottom" id="eBa-9f-ijh"/>
@@ -62,8 +76,55 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgU-oh-0hv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jvg-rl-NDd">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="504.58015267175568" y="-454.22535211267609"/>
+        </scene>
+        <!--Map Help View Controller-->
+        <scene sceneID="Xx0-pU-hMZ">
+            <objects>
+                <viewController id="wya-FW-vNg" customClass="MapHelpViewController" customModule="Wo_war_ich_letzte_Nacht" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e6a-aD-dYq">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kartenmarkierungen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk5-Gz-XFL">
+                                <rect key="frame" x="20" y="86" width="353" height="25.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-RE-ffg">
+                                <rect key="frame" x="20" y="131.33333333333337" width="353" height="198.66666666666663"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R8Q-WA-hsM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="R8Q-WA-hsM" firstAttribute="trailing" secondItem="Fk5-Gz-XFL" secondAttribute="trailing" constant="20" id="9Ki-jO-JCH"/>
+                            <constraint firstItem="yfs-RE-ffg" firstAttribute="leading" secondItem="R8Q-WA-hsM" secondAttribute="leading" constant="20" id="BbP-3t-5co"/>
+                            <constraint firstItem="R8Q-WA-hsM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yfs-RE-ffg" secondAttribute="bottom" constant="20" id="RUR-cJ-uN7"/>
+                            <constraint firstItem="R8Q-WA-hsM" firstAttribute="trailing" secondItem="yfs-RE-ffg" secondAttribute="trailing" constant="20" id="ThJ-rU-Q9w"/>
+                            <constraint firstItem="R8Q-WA-hsM" firstAttribute="bottom" secondItem="yfs-RE-ffg" secondAttribute="bottom" constant="512" placeholder="YES" id="ZJU-Ov-Ix8"/>
+                            <constraint firstItem="yfs-RE-ffg" firstAttribute="top" secondItem="Fk5-Gz-XFL" secondAttribute="bottom" constant="20" id="gST-fG-nwT"/>
+                            <constraint firstItem="Fk5-Gz-XFL" firstAttribute="leading" secondItem="R8Q-WA-hsM" secondAttribute="leading" constant="20" id="vOL-q2-8Dm"/>
+                            <constraint firstItem="Fk5-Gz-XFL" firstAttribute="top" secondItem="R8Q-WA-hsM" secondAttribute="top" constant="86" id="yAA-ke-RcG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="annotationHelpStackView" destination="yfs-RE-ffg" id="YL0-uK-59j"/>
+                        <outlet property="titleLabel" destination="Fk5-Gz-XFL" id="b1P-9v-7on"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="86z-vX-W5H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="-442"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="vV3-oA-Ohh">
@@ -211,6 +272,7 @@
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="mappin.circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
+        <image name="questionmark.app.fill" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

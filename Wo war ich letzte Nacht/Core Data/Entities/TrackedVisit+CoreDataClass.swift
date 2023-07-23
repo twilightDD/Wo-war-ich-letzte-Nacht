@@ -183,7 +183,7 @@ public class TrackedVisit: SOXManagedObject {
 
 extension TrackedVisit {
     
-    enum TrackingType: Int16 {
+    enum TrackingType: Int16, CaseIterable {
         case unknown = 0
         case manually
         case visit
@@ -191,19 +191,26 @@ extension TrackedVisit {
         case permanent
         
         
+        static func title(forTrackingType type: TrackingType)
+        -> String {
+            switch type {
+                case .unknown:              return "Unbekannt"
+                case .manually:             return "Händisch"
+                case .visit:                return "Visit"
+                case .significantChange:    return "Significant Change"
+                case .permanent:            return "Permanent"
+            }
+        }
+        
+        
         static func color(forTrackingType type: TrackingType)
         -> UIColor {
             switch type {
-                case .unknown:
-                    return .darkGray
-                case .manually:
-                    return .systemGreen
-                case .visit:
-                    return .systemRed
-                case .significantChange:
-                    return .systemOrange
-                case .permanent:
-                    return .systemPurple
+                case .unknown:              return .darkGray
+                case .manually:             return .systemGreen
+                case .visit:                return .systemRed
+                case .significantChange:    return .systemOrange
+                case .permanent:            return .systemPurple
             }
         }
     }

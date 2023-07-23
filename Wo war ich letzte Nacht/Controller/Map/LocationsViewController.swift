@@ -35,6 +35,7 @@ class LocationsViewController: UIViewController {
     //MARK: IBOutlets
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var addCurrentLocationButton: UIButton!
+    @IBOutlet var helpButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     
     
@@ -122,6 +123,7 @@ class LocationsViewController: UIViewController {
             })
     }
     
+  
 }
 
 
@@ -139,7 +141,6 @@ extension LocationsViewController {
                                              title: visit.placemark,
                                              subtitle: visit.datesDescription,
                                              markerTintColor: visit.trackingColor)
-            
             newAnnotations.append(annotaion)
         })
         
@@ -167,6 +168,7 @@ extension LocationsViewController: MKMapViewDelegate {
         if let simpleAnnotation = annotation as? SimpleAnnotation {
             annotationView.markerTintColor = simpleAnnotation.markerTintColor
         }
+        annotationView.displayPriority = .required
         return annotationView
     }
     
