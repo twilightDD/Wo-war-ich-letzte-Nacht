@@ -14,6 +14,7 @@ class VisitTableViewCell: SOXTableViewCell {
     @IBOutlet var visitedLocationLabel: UILabel!
     @IBOutlet var arrivalDateLabel: UILabel!
     @IBOutlet var departureDateLabel: UILabel!
+    @IBOutlet var trackingTypeView: UIView!
     
     
     //MARK: - Life cycle
@@ -48,6 +49,15 @@ class VisitTableViewCell: SOXTableViewCell {
         departureDateLabel.text = visit.departureDate != nil ?
                 SOXDateFormatter.dayMonthYearHourMinutesStringFor(date: visit.departureDate!)
                 : "???"
+        
+        // View
+        trackingTypeView.subviews.forEach( { $0.removeFromSuperview() } )
+        let trackingType = TrackedVisit.TrackingType(rawValue: visit.trackingType)!
+        let annotationView = TrackedVisit.TrackingType.annotationView(forTrackingType: trackingType)
+        trackingTypeView.addSubview(annotationView)
+        annotationView.frame = CGRect(origin: CGPoint(x: 0, y: 0),
+                                      size: annotationView.frame.size)
+        
     }
     
 }
