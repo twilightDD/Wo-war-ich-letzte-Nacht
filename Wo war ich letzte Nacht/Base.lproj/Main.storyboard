@@ -374,7 +374,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bao-Wk-DBw">
-                                <rect key="frame" x="16" y="115" width="343" height="282"/>
+                                <rect key="frame" x="16" y="115.00000000000001" width="343" height="224.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-7h-lEM">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="28.666666666666668"/>
@@ -393,18 +393,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iV-l5-jjB">
-                                        <rect key="frame" x="0.0" y="43.666666666666657" width="343" height="42.666666666666657"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="(Re)Start Tracking my Visits">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="startVisitTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="hg0-xY-Gs5"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-xL-8Cr">
-                                        <rect key="frame" x="0.0" y="101.33333333333334" width="343" height="42.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="43.666666666666657" width="343" height="42.666666666666657"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Stop Tracking">
@@ -415,7 +405,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-Pj-Bfp">
-                                        <rect key="frame" x="0.0" y="159" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="101.33333333333334" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Permament Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-B7-hrz">
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="31"/>
@@ -438,7 +428,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f24-rr-Nc7">
-                                        <rect key="frame" x="0.0" y="205" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="147.33333333333331" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Visits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-t9-nbR">
                                                 <rect key="frame" x="0.0" y="0.0" width="251" height="31"/>
@@ -461,7 +451,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-uD-zKZ">
-                                        <rect key="frame" x="0.0" y="251" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="193.33333333333331" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Significant Changes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-vw-ku9">
                                                 <rect key="frame" x="0.0" y="0.0" width="251" height="31"/>
@@ -525,7 +515,6 @@
                         <outlet property="permanentTrackingEnergyLabel" destination="08S-4g-ukz" id="xrQ-lg-LKe"/>
                         <outlet property="permanentTrackingSwitch" destination="Pdx-SO-Tlc" id="lsg-0l-plu"/>
                         <outlet property="settingsStackView" destination="bao-Wk-DBw" id="221-Jc-hkf"/>
-                        <outlet property="startVisitTrackingButton" destination="0iV-l5-jjB" id="Qyi-9y-j2E"/>
                         <outlet property="statusDescriptionLabel" destination="92x-Qn-aBe" id="uOo-m5-pm7"/>
                         <outlet property="statusLabel" destination="VIv-p0-DBf" id="yKf-hC-drd"/>
                         <outlet property="stopTrackingButton" destination="UR2-xL-8Cr" id="Xbm-Mx-33a"/>

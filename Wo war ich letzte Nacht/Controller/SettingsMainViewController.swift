@@ -14,7 +14,6 @@ class SettingsMainViewController: UIViewController {
     //MARK: Lets&Vars
     
     //MARK: - IBOutlets
-    @IBOutlet var startVisitTrackingButton: UIButton!
     @IBOutlet var stopTrackingButton: UIButton!
     
     @IBOutlet var settingsStackView: UIStackView!
@@ -129,11 +128,6 @@ class SettingsMainViewController: UIViewController {
 
     //MARK: - Action Methods
     //MARK: Tracking Management
-    @IBAction func startVisitTrackingButtonAction(_ sender: UIButton) {
-        CoreDataLocationManager.startMonitoringVisits()
-    }
-    
-    
     @IBAction func stopTrackingButtonAction(_ sender: UIButton) {
         SOXUserDefaultsManager.update(UserDefaultKey.permanentTracking, value: false)
         SOXUserDefaultsManager.update(UserDefaultKey.monitorVisits, value: false)
