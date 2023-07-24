@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         SOXCoreDatabase.startUp()
-        SOXLocationManager.updateLocation()
+        SOXLocationManager.startUpdatingLocation()
         CoreDataLocationManager.startMonitoringVisits()
         
         // Be aware: If your app is terminated while this service is active, the system relaunches your app when new visit events are ready to be delivered. Upon relaunch, recreate your location manager object and assign a delegate to begin receiving visit events. You don’t need to call this method again to restart the delivery of visit events, but calling it does no harm.

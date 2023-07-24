@@ -33,6 +33,8 @@ class SettingsMainViewController: UIViewController {
     
     
     @IBAction func stopTrackingButtonAction(_ sender: UIButton) {
+        SOXLocationManager.stopAll()
+        
         SOXLocationManager.stopUpdatingLocation(force: true)
         
         CoreDataLocationManager.stopMonitoringVisits()
