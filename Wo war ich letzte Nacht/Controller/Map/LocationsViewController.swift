@@ -67,6 +67,7 @@ class LocationsViewController: UIViewController {
     //MARK: - Setup Methods
     private func setupUI() {
         mapView.userTrackingMode = .follow
+        mapView.showsUserLocation = true
     }
     
     private func registerMapAnnotationViews() {
@@ -163,7 +164,14 @@ extension LocationsViewController {
 //MARK: - Extension - MKMapViewDelegate
 extension LocationsViewController: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation)
+    -> MKAnnotationView? {
+        
+        // UserLocation will be shown as default blue bubble
+        if let _ = annotation as? MKUserLocation {
+            return nil
+        }
+        
         let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
         if let simpleAnnotation = annotation as? SimpleAnnotation {
             annotationView.markerTintColor = simpleAnnotation.markerTintColor
