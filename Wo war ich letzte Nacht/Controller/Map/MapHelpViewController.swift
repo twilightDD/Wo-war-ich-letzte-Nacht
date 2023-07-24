@@ -45,7 +45,7 @@ class MapHelpViewController: UIViewController {
             rowStack.distribution = .fillEqually
             
             // Annotation
-            let annotationView = TrackedVisit.TrackingType.annotaionView(forTrackingType: trackingType)
+            let annotationView = TrackedVisit.TrackingType.annotationView(forTrackingType: trackingType)
             rowStack.addArrangedSubview(annotationView)
             
             // Label
