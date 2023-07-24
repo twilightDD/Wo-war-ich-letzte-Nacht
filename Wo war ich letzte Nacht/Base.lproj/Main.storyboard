@@ -165,11 +165,18 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="mappin.circle" catalog="system" id="x6j-8R-lRv">
-                            <connections>
-                                <action selector="retrieveGeocodedPlacemarksAction:" destination="Ydg-Wi-rbB" id="HLs-ci-acB"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="mappin.circle" catalog="system" id="x6j-8R-lRv">
+                                <connections>
+                                    <action selector="retrieveGeocodedPlacemarksAction:" destination="Ydg-Wi-rbB" id="HLs-ci-acB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="questionmark.app.fill" catalog="system" id="EsT-ys-MtF">
+                                <connections>
+                                    <segue destination="wya-FW-vNg" kind="presentation" id="Cvr-9I-eyP"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="importBarButtonItem" destination="VOk-7i-Q1F" id="eEZ-bV-ifa"/>
@@ -544,6 +551,9 @@
             <point key="canvasLocation" x="-1512" y="-430"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cvr-9I-eyP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="fireplace" catalog="system" width="128" height="103"/>
         <image name="gear" catalog="system" width="128" height="122"/>
