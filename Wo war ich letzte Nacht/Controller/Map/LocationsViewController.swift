@@ -68,6 +68,14 @@ class LocationsViewController: UIViewController {
     private func setupUI() {
         mapView.userTrackingMode = .follow
         mapView.showsUserLocation = true
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        let config = MKStandardMapConfiguration()
+        config.pointOfInterestFilter = MKPointOfInterestFilter(including: [
+            .atm, .bank, .beach, .brewery, .cafe, .foodMarket, .gasStation, .hospital, .hotel,
+            .movieTheater, .museum, .nightlife, .parking, .police, .publicTransport, .restaurant,
+            .restroom, .winery])
+        mapView.preferredConfiguration = config
     }
     
     private func registerMapAnnotationViews() {

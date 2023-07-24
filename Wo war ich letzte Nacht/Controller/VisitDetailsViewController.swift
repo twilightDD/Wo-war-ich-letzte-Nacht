@@ -41,7 +41,7 @@ class VisitDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +49,18 @@ class VisitDetailsViewController: UIViewController {
         
         updateLabels()
         updateMap()
+    }
+    
+    
+    private func setupUI() {
+        mapView.showsCompass = true
+        mapView.showsScale = true
+        let config = MKStandardMapConfiguration()
+        config.pointOfInterestFilter = MKPointOfInterestFilter(including: [
+            .atm, .bank, .beach, .brewery, .cafe, .foodMarket, .gasStation, .hospital, .hotel,
+            .movieTheater, .museum, .nightlife, .parking, .police, .publicTransport, .restaurant,
+            .restroom, .winery])
+        mapView.preferredConfiguration = config
     }
     
     
@@ -87,9 +99,8 @@ class VisitDetailsViewController: UIViewController {
             
             let center = CLLocationCoordinate2D(latitude: visit.latitude,
                                                 longitude: visit.longitude)
-            //let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
             let coordinateRegion =  MKCoordinateRegion(center: center,
-                                                       latitudinalMeters: 1500, longitudinalMeters: 1500)
+                                                       latitudinalMeters: 100, longitudinalMeters: 100)
             mapView.setRegion(coordinateRegion, animated: true)
         }
     }
