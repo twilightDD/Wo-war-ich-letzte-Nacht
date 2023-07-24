@@ -195,7 +195,7 @@ extension TrackedVisit {
         -> String {
             switch type {
                 case .unknown:              return "Unbekannt"
-                case .manually:             return "Händisch"
+                case .manually:             return "Manuell"
                 case .visit:                return "Visit"
                 case .significantChange:    return "Significant Change"
                 case .permanent:            return "Permanent"
@@ -208,7 +208,7 @@ extension TrackedVisit {
             switch type {
                 case .unknown:              return .darkGray
                 case .manually:             return .systemGreen
-                case .visit:                return .systemRed
+                case .visit:                return .systemCyan
                 case .significantChange:    return .systemOrange
                 case .permanent:            return .systemPurple
             }
