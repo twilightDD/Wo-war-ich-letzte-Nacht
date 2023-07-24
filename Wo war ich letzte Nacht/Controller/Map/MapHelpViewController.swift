@@ -45,10 +45,7 @@ class MapHelpViewController: UIViewController {
             rowStack.distribution = .fillEqually
             
             // Annotation
-            let markerTintColor = TrackedVisit.TrackingType.color(forTrackingType: trackingType)
-            let annotation = SimpleAnnotation(latitude: 0, longitude: 0, markerTintColor: markerTintColor)
-            let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
-            annotationView.markerTintColor = markerTintColor
+            let annotationView = TrackedVisit.TrackingType.annotaionView(forTrackingType: trackingType)
             rowStack.addArrangedSubview(annotationView)
             
             // Label

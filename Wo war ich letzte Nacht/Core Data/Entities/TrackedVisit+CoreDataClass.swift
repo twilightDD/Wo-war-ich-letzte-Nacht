@@ -11,6 +11,7 @@ import Foundation
 import CoreData
 
 import CoreLocation
+import MapKit
 import UIKit
 
 @objc(TrackedVisit)
@@ -184,6 +185,22 @@ public class TrackedVisit: SOXManagedObject {
 extension TrackedVisit {
     
     enum TrackingType: Int16, CaseIterable {
+        
+        private static var annotaionViews: [TrackingType : MKMarkerAnnotationView] = {
+            var annotationViews: [TrackingType : MKMarkerAnnotationView] = [:]
+            TrackedVisit.TrackingType.allCases.forEach( { trackingType in
+                // Annotation
+                let markerTintColor = TrackedVisit.TrackingType.color(forTrackingType: trackingType)
+                let annotation = SimpleAnnotation(latitude: 0, longitude: 0, markerTintColor: markerTintColor)
+                let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
+                annotationView.markerTintColor = markerTintColor
+                annotationViews[trackingType] = annotationView
+            })
+            
+            return annotationViews
+        }()
+        
+        
         case unknown = 0
         case manually
         case visit
@@ -212,6 +229,14 @@ extension TrackedVisit {
                 case .significantChange:    return .systemOrange
                 case .permanent:            return .systemPurple
             }
+        }
+        
+        static func annotaionView(forTrackingType type: TrackingType)
+        -> MKMarkerAnnotationView {
+            guard let annotaionView = annotaionViews[type] else {
+                fatalError("annotationView for \(type.rawValue) is missing.") }
+            
+            return annotaionView
         }
     }
     
