@@ -58,6 +58,9 @@ class VisitTableViewCell: SOXTableViewCell {
         annotationView.frame = CGRect(origin: CGPoint(x: 0, y: 0),
                                       size: annotationView.frame.size)
         
+        // AccessoryType
+        accessoryType = .disclosureIndicator
+        
     }
     
 }

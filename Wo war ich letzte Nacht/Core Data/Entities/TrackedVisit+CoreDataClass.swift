@@ -192,6 +192,13 @@ extension TrackedVisit {
         case significantChange
         case permanent
         
+        static func title(forTrackingType type: Int16)
+        -> String {
+            guard let trackingType = TrackingType.init(rawValue: type) else {
+                return title(forTrackingType: .unknown) }
+            
+            return title(forTrackingType: trackingType)
+        }
         
         static func title(forTrackingType type: TrackingType)
         -> String {

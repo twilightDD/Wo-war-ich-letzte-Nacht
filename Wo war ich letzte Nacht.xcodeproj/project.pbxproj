@@ -191,6 +191,7 @@
 		D03299AF2A69424E00FA787A /* SOXNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */; };
 		D03299B02A69424E00FA787A /* SOXDateFormatter+Repeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */; };
 		D0BA7F292A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */; };
+		D0BA7F2B2A6EC18F00B54FF6 /* VisitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */; };
 		D0C3D0C22A62E5B1003FA2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */; };
 		D0C3D0C42A62E5B1003FA2C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */; };
 		D0C3D0C62A62E5B1003FA2C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C52A62E5B1003FA2C9 /* ViewController.swift */; };
@@ -431,6 +432,7 @@
 		D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXNumberFormatter.swift; sourceTree = "<group>"; };
 		D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SOXDateFormatter+Repeats.swift"; sourceTree = "<group>"; };
 		D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOXUserDefaultsManager.swift; sourceTree = "<group>"; };
+		D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsViewController.swift; sourceTree = "<group>"; };
 		D0C3D0BE2A62E5B1003FA2C9 /* Wo war ich letzte Nacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wo war ich letzte Nacht.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0C3D0C32A62E5B1003FA2C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -880,6 +882,7 @@
 				D032982E2A67FC7F00FA787A /* Map */,
 				D0C3D0F92A63FE48003FA2C9 /* SettingsMainViewController.swift */,
 				D032984B2A689F6100FA787A /* VisitsTableViewController.swift */,
+				D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				D0C3D1222A6402EE003FA2C9 /* NSManagedObject+Debugging.swift in Sources */,
 				D03298432A683AC600FA787A /* TrackedLocation+CoreDataClass.swift in Sources */,
 				D032991D2A69415A00FA787A /* Date+Compare.swift in Sources */,
+				D0BA7F2B2A6EC18F00B54FF6 /* VisitDetailsViewController.swift in Sources */,
 				D032991B2A69415A00FA787A /* Date+Components.swift in Sources */,
 				D03299AF2A69424E00FA787A /* SOXNumberFormatter.swift in Sources */,
 				D032990E2A69415A00FA787A /* Commons.swift in Sources */,

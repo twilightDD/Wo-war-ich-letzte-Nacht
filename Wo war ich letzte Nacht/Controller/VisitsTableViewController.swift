@@ -12,6 +12,8 @@ import CoreLocation
 class VisitsTableViewController: UITableViewController {
     
     //MARK: - Lets and Vars
+    static let VisitDetailsViewControllerSegueKey = "VisitDetailsViewControllerSegue"
+    
     private var visits: [TrackedVisit] = []
     
     //MARK: - IBOutlets
@@ -34,6 +36,18 @@ class VisitsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         updateUI()
+    }
+    
+    //MARK: - Segue handling
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == VisitsTableViewController.VisitDetailsViewControllerSegueKey {
+            guard let visit = sender as? TrackedVisit else {
+                fatalError("Theres no TrackedVisit to show.")}
+            guard let destination = segue.destination as? VisitDetailsViewController else {
+                fatalError("Destination must be a VisitDetailsViewController.")}
+            
+            destination.visit = visit
+        }
     }
     
     
@@ -84,7 +98,6 @@ class VisitsTableViewController: UITableViewController {
     @IBAction func importBarButtonItemAction(_ sender: UIBarButtonItem) {
         let alertView = UIAlertController.init(title: "Import", message: nil, preferredStyle: .alert)
         
-        let textField = UITextField()
         alertView.addTextField(configurationHandler:  { textField in
             print("configurationHandler")
         })
@@ -218,5 +231,10 @@ extension VisitsTableViewController {
         }
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedVisit = visits[indexPath.row]
+        performSegue(withIdentifier: VisitsTableViewController.VisitDetailsViewControllerSegueKey, sender: selectedVisit)
+    }
 
 }
