@@ -193,58 +193,173 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iV-l5-jjB">
-                                <rect key="frame" x="42.333333333333343" y="163" width="308.66666666666663" height="42.666666666666657"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="(Re)Start Tracking my Visits">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="startVisitTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="hg0-xY-Gs5"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einstellungen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kL-eN-ejG">
+                                <rect key="frame" x="123" y="58.999999999999993" width="147" height="28.666666666666664"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bao-Wk-DBw">
+                                <rect key="frame" x="16" y="124" width="361" height="282"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-7h-lEM">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="28.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92x-Qn-aBe">
+                                                <rect key="frame" x="0.0" y="0.0" width="159.33333333333334" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active/Inactive" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIv-p0-DBf">
+                                                <rect key="frame" x="194" y="0.0" width="167" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iV-l5-jjB">
+                                        <rect key="frame" x="0.0" y="43.666666666666657" width="361" height="42.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="(Re)Start Tracking my Visits">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="startVisitTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="hg0-xY-Gs5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-xL-8Cr">
+                                        <rect key="frame" x="0.0" y="101.33333333333334" width="361" height="42.666666666666657"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Stop Tracking">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="stopTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="yGS-X8-aep"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-Pj-Bfp">
+                                        <rect key="frame" x="0.0" y="159" width="361" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Permament Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-B7-hrz">
+                                                <rect key="frame" x="0.0" y="0.0" width="223" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="⚡️⚡️⚡️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08S-4g-ukz">
+                                                <rect key="frame" x="233" y="0.0" width="69" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Permanent" translatesAutoresizingMaskIntoConstraints="NO" id="Pdx-SO-Tlc">
+                                                <rect key="frame" x="312" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="permanentTrackingSwitchAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="YZB-eP-Oqi"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f24-rr-Nc7">
+                                        <rect key="frame" x="0.0" y="205" width="361" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Visits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-t9-nbR">
+                                                <rect key="frame" x="0.0" y="0.0" width="269" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="⚡️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V20-aw-VH3">
+                                                <rect key="frame" x="279" y="0.0" width="23" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Permanent" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-mj-c5x">
+                                                <rect key="frame" x="312" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="monitorVisitsSwitchAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="YEH-9A-jHC"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-uD-zKZ">
+                                        <rect key="frame" x="0.0" y="251" width="361" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Significant Changes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-vw-ku9">
+                                                <rect key="frame" x="0.0" y="0.0" width="269" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="⚡️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgB-rd-E2J">
+                                                <rect key="frame" x="279" y="0.0" width="23" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Permanent" translatesAutoresizingMaskIntoConstraints="NO" id="E5E-PD-cm1">
+                                                <rect key="frame" x="312" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="monitorSignificantChangesSwitchAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="xlA-dz-djZ"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gzo-h4-cUE">
-                                <rect key="frame" x="126.66666666666669" y="691" width="140" height="35"/>
+                                <rect key="frame" x="109.33333333333333" y="714.66666666666663" width="174.33333333333337" height="34.333333333333371"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete all Visits"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete All Locations"/>
                                 <connections>
                                     <action selector="deleteLocationStoreButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="8lh-Wj-L17"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-xL-8Cr">
-                                <rect key="frame" x="114.00000000000001" y="235.66666666666666" width="165.33333333333337" height="42.666666666666657"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Stop Tracking">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="stopTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="yGS-X8-aep"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="el6-M0-PAS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gzo-h4-cUE" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="Itd-P6-SUg"/>
-                            <constraint firstItem="0iV-l5-jjB" firstAttribute="top" secondItem="el6-M0-PAS" secondAttribute="top" constant="104" id="OLH-q6-usS"/>
-                            <constraint firstItem="UR2-xL-8Cr" firstAttribute="top" secondItem="0iV-l5-jjB" secondAttribute="bottom" constant="30" id="VFM-8o-XOy"/>
-                            <constraint firstItem="el6-M0-PAS" firstAttribute="bottom" secondItem="Gzo-h4-cUE" secondAttribute="bottom" constant="43" id="htH-Aw-ImX"/>
-                            <constraint firstItem="UR2-xL-8Cr" firstAttribute="centerX" secondItem="0iV-l5-jjB" secondAttribute="centerX" id="hwW-Yc-LH4"/>
-                            <constraint firstItem="0iV-l5-jjB" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="lwQ-Ur-GRh"/>
+                            <constraint firstItem="bao-Wk-DBw" firstAttribute="top" secondItem="6kL-eN-ejG" secondAttribute="bottom" constant="36.333333333333343" id="B7M-Xa-ydV"/>
+                            <constraint firstItem="6kL-eN-ejG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="el6-M0-PAS" secondAttribute="leading" constant="20" id="GfN-F9-930"/>
+                            <constraint firstItem="el6-M0-PAS" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6kL-eN-ejG" secondAttribute="trailing" constant="20" id="IKw-Za-pgd"/>
+                            <constraint firstItem="bao-Wk-DBw" firstAttribute="leading" secondItem="el6-M0-PAS" secondAttribute="leading" constant="16" id="JeN-HT-reE"/>
+                            <constraint firstItem="6kL-eN-ejG" firstAttribute="top" secondItem="el6-M0-PAS" secondAttribute="top" id="Nks-wE-Qzr"/>
+                            <constraint firstItem="el6-M0-PAS" firstAttribute="trailing" secondItem="bao-Wk-DBw" secondAttribute="trailing" constant="16" id="Q45-Sf-i8Y"/>
+                            <constraint firstItem="el6-M0-PAS" firstAttribute="bottom" secondItem="Gzo-h4-cUE" secondAttribute="bottom" constant="20" id="VRd-bZ-rW8"/>
+                            <constraint firstItem="el6-M0-PAS" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gzo-h4-cUE" secondAttribute="trailing" constant="20" id="WA6-cN-Vc8"/>
+                            <constraint firstItem="Gzo-h4-cUE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="el6-M0-PAS" secondAttribute="leading" constant="20" id="YY6-4p-CQo"/>
+                            <constraint firstItem="Gzo-h4-cUE" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="hgQ-7T-vz2"/>
+                            <constraint firstItem="Gzo-h4-cUE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bao-Wk-DBw" secondAttribute="bottom" constant="20" id="oIt-P9-LFJ"/>
+                            <constraint firstItem="6kL-eN-ejG" firstAttribute="centerX" secondItem="el6-M0-PAS" secondAttribute="centerX" id="vnv-Oc-hyt"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" selectedImage="gear" id="1X3-4z-J1m"/>
                     <connections>
                         <outlet property="deleteLocationStoreButton" destination="Gzo-h4-cUE" id="KjA-WY-srz"/>
+                        <outlet property="monitorSignificantChangesDescriptionLabel" destination="3cW-vw-ku9" id="Mau-Y8-Ndo"/>
+                        <outlet property="monitorSignificantChangesEnergyLabel" destination="cgB-rd-E2J" id="og9-XD-wy0"/>
+                        <outlet property="monitorSignificantChangesSwitch" destination="E5E-PD-cm1" id="6zn-gL-QtZ"/>
+                        <outlet property="monitorVisitsDescriptionLabel" destination="zJw-t9-nbR" id="gpK-EF-5Ho"/>
+                        <outlet property="monitorVisitsEnergyLabel" destination="V20-aw-VH3" id="O4z-T4-kha"/>
+                        <outlet property="monitorVisitsSwitch" destination="1cK-mj-c5x" id="Fhb-76-YJ3"/>
+                        <outlet property="permanentTrackingDescriptionLabel" destination="pHX-B7-hrz" id="vtp-QW-mQW"/>
+                        <outlet property="permanentTrackingEnergyLabel" destination="08S-4g-ukz" id="xrQ-lg-LKe"/>
+                        <outlet property="permanentTrackingSwitch" destination="Pdx-SO-Tlc" id="lsg-0l-plu"/>
+                        <outlet property="settingsStackView" destination="bao-Wk-DBw" id="221-Jc-hkf"/>
                         <outlet property="startVisitTrackingButton" destination="0iV-l5-jjB" id="Qyi-9y-j2E"/>
+                        <outlet property="statusDescriptionLabel" destination="92x-Qn-aBe" id="uOo-m5-pm7"/>
+                        <outlet property="statusLabel" destination="VIv-p0-DBf" id="yKf-hC-drd"/>
                         <outlet property="stopTrackingButton" destination="UR2-xL-8Cr" id="Xbm-Mx-33a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blt-ea-Ftu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="-779"/>
+            <point key="canvasLocation" x="-535.1145038167939" y="-779.57746478873241"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N5P-Kj-8Jk">

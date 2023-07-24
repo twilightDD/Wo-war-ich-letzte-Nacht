@@ -54,8 +54,13 @@ class SOXLocationManager: NSObject {
     //MARK: - Public Class Methods
     class func stopAll() {
         stopUpdatingLocation(force: true)
-        stopMonitoringVisits()
-        stopMonitoringSignificantLocationChanges()
+        shared.locationManager.stopMonitoringVisits()
+        shared.locationManager.stopMonitoringSignificantLocationChanges()
+        
+        shared.requestDelegates.removeAllObjects()
+        shared.updatingLocationDelegates.removeAllObjects()
+        shared.monitoringVisitsDelegates.removeAllObjects()
+        shared.monitoringSignificantLocationDelegates.removeAllObjects()
     }
     
     
@@ -173,6 +178,7 @@ extension SOXLocationManager {
         monitoringVisitsDelegates.add(delegate)
         
         locationManager.startMonitoringVisits()
+        print("LocationManager.registerForVisitTracking: startMonitoringVisits")
     }
     
     private func unRegisterForVisitTracking<T: SOXLocationManagerDelegate>(target delegate:T) {
@@ -183,6 +189,7 @@ extension SOXLocationManager {
         
         if monitoringVisitsDelegates.count < 1 {
             locationManager.stopMonitoringVisits()
+            print("LocationManager.unRegisterForVisitTracking: stopMonitoringVisits")
         }
     }
     
@@ -194,6 +201,7 @@ extension SOXLocationManager {
         monitoringSignificantLocationDelegates.add(delegate)
         
         locationManager.startMonitoringSignificantLocationChanges()
+        print("LocationManager.registerForSignificantLocationChanges: startMonitoringSignificantLocationChanges")
     }
     
     private func unRegisterForSignificantLocationChanges<T: SOXLocationManagerDelegate>(target delegate:T) {
@@ -204,6 +212,7 @@ extension SOXLocationManager {
         
         if monitoringSignificantLocationDelegates.count < 1 {
             locationManager.stopMonitoringSignificantLocationChanges()
+            print("LocationManager.unRegisterForSignificantLocationChanges: stopMonitoringSignificantLocationChanges")
         }
     }
     
@@ -218,7 +227,9 @@ extension SOXLocationManager {
 }
 
 
-extension SOXLocationManager:CLLocationManagerDelegate {
+//MARK: - Extension - CLLocationManagerDelegate
+extension SOXLocationManager: CLLocationManagerDelegate {
+    
     internal func locationManager(_ manager: CLLocationManager,
                                   didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {

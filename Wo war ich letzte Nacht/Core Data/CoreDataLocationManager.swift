@@ -16,12 +16,33 @@ class CoreDataLocationManager: NSObject {
     
     //MARK: - Public Methods
     static func start() {
-        SOXLocationManager.registerForLocationTracking(target: shared)
+        if SOXUserDefaultsManager.bool(forKey: UserDefaultKey.permanentTracking) {
+            SOXLocationManager.registerForLocationTracking(target: shared)
+        }
+        else {
+            if SOXUserDefaultsManager.bool(forKey: UserDefaultKey.monitorVisits) {
+                SOXLocationManager.registerForVisitTracking(target: shared)
+            }
+            if SOXUserDefaultsManager.bool(forKey: UserDefaultKey.monitorSignificantChanges) {
+                SOXLocationManager.registerForSignificantLocationChanges(target: shared)
+            }
+        }
     }
+    
+    
     
     static func stop() {
         SOXLocationManager.unRegisterForLocationTracking(target: shared)
     }
+    
+    static func startPermanentTracking() {
+        SOXLocationManager.registerForLocationTracking(target: shared)
+    }
+    
+    static func stopPermanentTracking() {
+        SOXLocationManager.unRegisterForLocationTracking(target: shared)
+    }
+    
     
     static func startMonitoringVisits() {
         SOXLocationManager.registerForVisitTracking(target: shared)
@@ -29,6 +50,14 @@ class CoreDataLocationManager: NSObject {
     
     static func stopMonitoringVisits() {
         SOXLocationManager.unRegisterForVisitTracking(target: shared)
+    }
+    
+    static func startMonitoringSignificantChanges() {
+        SOXLocationManager.registerForSignificantLocationChanges(target: shared)
+    }
+    
+    static func stopMonitoringSignificantChanges() {
+        SOXLocationManager.unRegisterForSignificantLocationChanges(target: shared)
     }
     
 }
@@ -41,26 +70,38 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
         shared.didUpdateLocation(location)
     }
     
+    /// permanentTracking and significant change
     func didUpdateLocation(_ location: CLLocation?) {
         if let location {
             SOXCoreDatabase.performAndSaveInUIEditContext(
                 workingBlock:  { context in
-                    let _ = TrackedLocation.insert(in: context,
-                                                   latitude: location.coordinate.latitude,
-                                                   longitude: location.coordinate.longitude)
+                    
+                    var trackingType: TrackedVisit.TrackingType = .unknown
+                    if SOXUserDefaultsManager.bool(forKey: UserDefaultKey.permanentTracking) {
+                        trackingType = .permanent
+                    }
+                    else {
+                        trackingType = .significantChange
+                    }
+                    
+                    let _ = TrackedVisit.insert(inContext: context,
+                                                trackingType: trackingType,
+                                                arrivalDate:  location.timestamp,
+                                                departureDate: nil,
+                                                horizontalAccuracy: location.horizontalAccuracy,
+                                                latitude: location.coordinate.latitude,
+                                                longitude: location.coordinate.longitude)
                 },
                 completionBlock: {
                     print("did add a new CoreData.Location")
-                    let allLocations = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedLocation.self)
+                    let allLocations = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self)
                     print("now: \(allLocations.count)")
                 })
         }
     }
     
-    static func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        shared.locationManager(manager, didVisit: visit)
-    }
     
+    /// visit
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
         print("CoreDataLocationManager - didVisit")
         SOXCoreDatabase.performAndSaveInUIEditContext(
