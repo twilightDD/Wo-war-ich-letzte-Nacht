@@ -190,6 +190,7 @@
 		D03299AE2A69424E00FA787A /* SOXEurekaFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299A92A69424E00FA787A /* SOXEurekaFormatters.swift */; };
 		D03299AF2A69424E00FA787A /* SOXNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */; };
 		D03299B02A69424E00FA787A /* SOXDateFormatter+Repeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */; };
+		D04CCF6A2A7A7EC600B864F3 /* SettingsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */; };
 		D0BA7F292A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */; };
 		D0BA7F2B2A6EC18F00B54FF6 /* VisitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */; };
 		D0C3D0C22A62E5B1003FA2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */; };
@@ -431,6 +432,7 @@
 		D03299A92A69424E00FA787A /* SOXEurekaFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXEurekaFormatters.swift; sourceTree = "<group>"; };
 		D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXNumberFormatter.swift; sourceTree = "<group>"; };
 		D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SOXDateFormatter+Repeats.swift"; sourceTree = "<group>"; };
+		D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainView.swift; sourceTree = "<group>"; };
 		D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOXUserDefaultsManager.swift; sourceTree = "<group>"; };
 		D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsViewController.swift; sourceTree = "<group>"; };
 		D0C3D0BE2A62E5B1003FA2C9 /* Wo war ich letzte Nacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wo war ich letzte Nacht.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -883,6 +885,7 @@
 				D0C3D0F92A63FE48003FA2C9 /* SettingsMainViewController.swift */,
 				D032984B2A689F6100FA787A /* VisitsTableViewController.swift */,
 				D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */,
+				D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1238,6 +1241,7 @@
 				D03299B02A69424E00FA787A /* SOXDateFormatter+Repeats.swift in Sources */,
 				D0C3D1072A6402C8003FA2C9 /* SOXManagedObject.swift in Sources */,
 				D03299102A69415A00FA787A /* Locales.swift in Sources */,
+				D04CCF6A2A7A7EC600B864F3 /* SettingsMainView.swift in Sources */,
 				D0C3D1212A6402EE003FA2C9 /* NSManagedObject+ContextSwitch.swift in Sources */,
 				D03299A22A69415A00FA787A /* TimeInterval+Formatter.swift in Sources */,
 				D03298552A69409A00FA787A /* SOXDateFormatter.swift in Sources */,
