@@ -191,6 +191,7 @@
 		D03299AF2A69424E00FA787A /* SOXNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */; };
 		D03299B02A69424E00FA787A /* SOXDateFormatter+Repeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */; };
 		D04CCF6A2A7A7EC600B864F3 /* SettingsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */; };
+		D04CCF6C2A7C0D2D00B864F3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04CCF6B2A7C0D2D00B864F3 /* MapView.swift */; };
 		D0BA7F292A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */; };
 		D0BA7F2B2A6EC18F00B54FF6 /* VisitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */; };
 		D0C3D0C22A62E5B1003FA2C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3D0C12A62E5B1003FA2C9 /* AppDelegate.swift */; };
@@ -433,6 +434,7 @@
 		D03299AA2A69424E00FA787A /* SOXNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOXNumberFormatter.swift; sourceTree = "<group>"; };
 		D03299AB2A69424E00FA787A /* SOXDateFormatter+Repeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SOXDateFormatter+Repeats.swift"; sourceTree = "<group>"; };
 		D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainView.swift; sourceTree = "<group>"; };
+		D04CCF6B2A7C0D2D00B864F3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D0BA7F282A6E8BDB00B54FF6 /* SOXUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOXUserDefaultsManager.swift; sourceTree = "<group>"; };
 		D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsViewController.swift; sourceTree = "<group>"; };
 		D0C3D0BE2A62E5B1003FA2C9 /* Wo war ich letzte Nacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wo war ich letzte Nacht.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -774,6 +776,15 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		D04CCF6D2A7C159800B864F3 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D04CCF6B2A7C0D2D00B864F3 /* MapView.swift */,
+				D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		D0BA7F272A6E8BC200B54FF6 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,12 +891,12 @@
 		D0C3D0F72A63FDA1003FA2C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D04CCF6D2A7C159800B864F3 /* SwiftUI */,
 				D032984D2A693C6100FA787A /* Views */,
 				D032982E2A67FC7F00FA787A /* Map */,
 				D0C3D0F92A63FE48003FA2C9 /* SettingsMainViewController.swift */,
 				D032984B2A689F6100FA787A /* VisitsTableViewController.swift */,
 				D0BA7F2A2A6EC18F00B54FF6 /* VisitDetailsViewController.swift */,
-				D04CCF692A7A7EC600B864F3 /* SettingsMainView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1255,6 +1266,7 @@
 				D03299AE2A69424E00FA787A /* SOXEurekaFormatters.swift in Sources */,
 				D0C3D11E2A6402EE003FA2C9 /* UUID+UUIDStringFromDictionary.swift in Sources */,
 				D0C3D11F2A6402EE003FA2C9 /* NSManagedObjectContext+SaveMethods.swift in Sources */,
+				D04CCF6C2A7C0D2D00B864F3 /* MapView.swift in Sources */,
 				D03298522A693CA400FA787A /* VisitTableViewCell.swift in Sources */,
 				D0C3D1172A6402EE003FA2C9 /* NSManagedObjectContext+Forget.swift in Sources */,
 				D01AE1D12A6DD6F100A4B6C3 /* MapHelpViewController.swift in Sources */,

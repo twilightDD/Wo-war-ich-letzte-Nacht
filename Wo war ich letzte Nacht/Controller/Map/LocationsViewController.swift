@@ -149,7 +149,8 @@ extension LocationsViewController {
             let annotaion = SimpleAnnotation(latitude: visit.latitude, longitude: visit.longitude,
                                              title: visit.placemark,
                                              subtitle: visit.datesDescription,
-                                             markerTintColor: visit.trackingColor)
+                                             markerTintColor: visit.trackingColor,
+                                             id: visit.uuid)
             newAnnotations.append(annotaion)
         })
         

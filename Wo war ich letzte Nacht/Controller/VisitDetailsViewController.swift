@@ -94,7 +94,8 @@ class VisitDetailsViewController: UIViewController {
             let annotaion = SimpleAnnotation(latitude: visit.latitude, longitude: visit.longitude,
                                              title: visit.placemark,
                                              subtitle: visit.datesDescription,
-                                             markerTintColor: visit.trackingColor)
+                                             markerTintColor: visit.trackingColor,
+                                             id: visit.uuid)
             mapView.addAnnotation(annotaion)
             
             let center = CLLocationCoordinate2D(latitude: visit.latitude,

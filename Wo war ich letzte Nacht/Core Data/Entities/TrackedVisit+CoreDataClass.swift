@@ -226,7 +226,7 @@ extension TrackedVisit {
         static func annotationView(forTrackingType trackingType: TrackingType)
         -> MKMarkerAnnotationView {
             let markerTintColor = TrackedVisit.TrackingType.color(forTrackingType: trackingType)
-            let annotation = SimpleAnnotation(latitude: 0, longitude: 0, markerTintColor: markerTintColor)
+            let annotation = SimpleAnnotation(latitude: 0, longitude: 0, markerTintColor: markerTintColor, id: UUID())
             let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
             annotationView.markerTintColor = markerTintColor
             

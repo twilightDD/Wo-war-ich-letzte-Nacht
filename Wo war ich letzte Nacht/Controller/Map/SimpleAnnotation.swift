@@ -6,8 +6,9 @@
 //
 
 import MapKit
+import SwiftUI
 
-class SimpleAnnotation: NSObject, MKAnnotation {
+class SimpleAnnotation: NSObject, MKAnnotation, Identifiable {
     
     // This property must be key-value observable, which the `@objc dynamic` attributes provide.
     @objc dynamic var coordinate = CLLocationCoordinate2D(latitude: 37.779_379, longitude: -122.418_433)
@@ -20,13 +21,17 @@ class SimpleAnnotation: NSObject, MKAnnotation {
     
     var markerTintColor: UIColor
     
+    var id: UUID
+    
     init(latitude: Double, longitude: Double,
          title: String? = nil, subtitle: String? = nil,
-         markerTintColor: UIColor) {
+         markerTintColor: UIColor,
+         id: UUID) {
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.title = title
         self.subtitle = subtitle
         self.markerTintColor = markerTintColor
+        self.id = id
     }
     
 }
