@@ -17,6 +17,8 @@ class SettingsMainViewController: UIViewController {
     @IBOutlet var stopTrackingButton: UIButton!
     
     @IBOutlet var settingsStackView: UIStackView!
+    
+    // Tracking settings
     @IBOutlet var statusDescriptionLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var permanentTrackingDescriptionLabel: UILabel!
@@ -29,7 +31,13 @@ class SettingsMainViewController: UIViewController {
     @IBOutlet var monitorSignificantChangesEnergyLabel: UILabel!
     @IBOutlet var monitorSignificantChangesSwitch: UISwitch!
     
+    // General settings
+    @IBOutlet var autoGeolocateDescriptionLabel: UILabel!
+    @IBOutlet var autoGeolocateSwitch: UISwitch!
+    
+    // Delete Locations
     @IBOutlet var deleteLocationStoreButton: UIButton!
+    
     
     //MARK: - Init&Co.
     override func viewDidLoad() {
@@ -61,7 +69,7 @@ class SettingsMainViewController: UIViewController {
             statusLabel.text = "Inactive"
         }
         
-        // Switches
+        // Switches for Tracking
         let permanentTracking = SOXUserDefaultsManager.bool(forKey: UserDefaultKey.permanentTracking)
         let monitorVisits = SOXUserDefaultsManager.bool(forKey: UserDefaultKey.monitorVisits)
         let monitorSignificantChanges = SOXUserDefaultsManager.bool(forKey: UserDefaultKey.monitorSignificantChanges)
@@ -94,7 +102,11 @@ class SettingsMainViewController: UIViewController {
             
         }
         
+        // Switches for General Settings
+        let autoGeolocate = SOXUserDefaultsManager.bool(forKey: UserDefaultKey.autoGeolocate)
+        autoGeolocateSwitch.isOn = autoGeolocate
     }
+    
     
     private func updateTrackingStatus() {
         let permanentTracking = SOXUserDefaultsManager.bool(forKey: UserDefaultKey.permanentTracking)
@@ -138,7 +150,7 @@ class SettingsMainViewController: UIViewController {
         SOXLocationManager.stopAll()
     }
     
-    //MARK: Switches
+    //MARK: Tracking Switches
     @IBAction func permanentTrackingSwitchAction(_ sender: UISwitch) {
         SOXUserDefaultsManager.update(UserDefaultKey.permanentTracking, value: sender.isOn)
         updateUI()
@@ -157,6 +169,12 @@ class SettingsMainViewController: UIViewController {
         updateSignificantChangesStatus()
     }
     
+    
+    //MARK: General Switches
+    @IBAction func autoGeolocateSwitchAction(_ sender: UISwitch) {
+        SOXUserDefaultsManager.update(UserDefaultKey.autoGeolocate, value: sender.isOn)
+        updateUI()
+    }
     
     //MARK: Deletion
     @IBAction func deleteLocationStoreButtonAction(_ sender: UIButton) {

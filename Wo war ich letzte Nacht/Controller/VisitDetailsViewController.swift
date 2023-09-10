@@ -17,6 +17,8 @@ class VisitDetailsViewController: UIViewController {
     
     
     //MARK: - IBOutlets
+    @IBOutlet var geocodeVisitBarButtonItem: UIBarButtonItem!
+    
     @IBOutlet var pointOfInterestDescriptionLabel: UILabel!
     @IBOutlet var pointOfInterestLabel: UILabel!
     @IBOutlet var placemarkDescriptionLabel: UILabel!
@@ -34,10 +36,10 @@ class VisitDetailsViewController: UIViewController {
     @IBOutlet var trackingTypeDescriptionLabel: UILabel!
     @IBOutlet var trackingTypeLabel: UILabel!
     
-    
     @IBOutlet var mapView: MKMapView!
     
     
+    //MARK: - Init&Co
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +54,7 @@ class VisitDetailsViewController: UIViewController {
     }
     
     
+    //MARK: - Setup Methods
     private func setupUI() {
         mapView.showsCompass = true
         mapView.showsScale = true
@@ -64,6 +67,7 @@ class VisitDetailsViewController: UIViewController {
     }
     
     
+    //MARK: - Private Methods
     private func updateLabels() {
         if let visit {
             pointOfInterestLabel.text = visit.pointOfInterest ?? "-"
@@ -106,14 +110,15 @@ class VisitDetailsViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   //MARK: - Action Methods
+    @IBAction func geocodeVisitBarButtonItemAction(_ sender: UIBarButtonItem) {
+        guard let visit else {
+            return }
+        CoreDataLocationManager.updateGeocode(forVisitWithUUID: visit.uuid)
+        
+        DispatchQueue.delayOnMain(2.0, execute: { [weak self] in 
+            self?.updateLabels()
+        })
     }
-    */
 
 }

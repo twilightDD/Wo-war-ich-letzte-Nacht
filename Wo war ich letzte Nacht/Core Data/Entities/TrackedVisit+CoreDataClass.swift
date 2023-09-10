@@ -104,6 +104,16 @@ public class TrackedVisit: SOXManagedObject {
     }
     
     
+    static func fetch(withUUID uuid: UUID,
+                      inContext context: NSManagedObjectContext = SOXCoreDatabase.viewOnlyContext())
+    -> TrackedVisit? {
+        let fetchedVisit = context.fetchUniqueObject(forEntityClass: TrackedVisit.self,
+                                                     predicateString: "%K == %@",
+                                                     predicateArguments: [TrackedVisit.Attributes.uuid, uuid])
+        return fetchedVisit
+    }
+    
+    
     static func importVisits(_ importDicts: [[String : Any]])
     -> Bool {
         let editContext = SOXCoreDatabase.newEditContext(forUI: true)
@@ -182,6 +192,8 @@ public class TrackedVisit: SOXManagedObject {
     
 }
 
+
+//MARK: - Extension - TrackingType
 extension TrackedVisit {
     
     enum TrackingType: Int16, CaseIterable {

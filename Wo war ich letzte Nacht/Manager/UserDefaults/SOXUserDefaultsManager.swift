@@ -17,6 +17,8 @@ enum UserDefaultKey: String, CaseIterable {
     case monitorSignificantChanges = "Tracking_monitorSignificantChanges"
     /// bool
     case permanentTracking = "Tracking_permanentTracking"
+    /// bool
+    case autoGeolocate = "Interweb_autoGeolocate"
 }
 
 

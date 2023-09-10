@@ -138,33 +138,36 @@ class VisitsTableViewController: UITableViewController {
     
     //MARK: - Private Methods
     private func retrieveGeocodedPlacemarks() async {
-        let geoCoder = CLGeocoder()
-        let editContext = SOXCoreDatabase.newEditContext(forUI: true)
         
         for visit in visits {
             guard visit.placemark == nil else {
                 print("Placemark already set for \(visit.uuid.uuidString)")
                 continue }
             
-            let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
-            
-            do {
-                let placemarks = try await geoCoder.reverseGeocodeLocation(clLocation)
-                if let placemark = placemarks.first {
-                    visit.updateAndSaveWith(placemark: placemark,
-                                            inContext: editContext,
-                                            completionBlock: { [weak self] in
-                        self?.updateUI()
-                    })
-                    print("Placemarks found for \(visit.uuid.uuidString)")
-                }
-                else {
-                    print("Placemarks not found for \(visit.uuid.uuidString)")
-                }
-            }
-            catch let geoCoderError {
-                print(geoCoderError.localizedDescription)
-            }
+            DispatchQueue.delayOnMain(1.0, execute: {
+                
+                
+                CoreDataLocationManager.updateGeocode(forVisitWithUUID: visit.uuid)
+//                let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
+//
+//                do {
+//                    let placemarks = try await geoCoder.reverseGeocodeLocation(clLocation)
+//                    if let placemark = placemarks.first {
+//                        visit.updateAndSaveWith(placemark: placemark,
+//                                                inContext: editContext,
+//                                                completionBlock: { [weak self] in
+//                            self?.updateUI()
+//                        })
+//                        print("Placemarks found for \(visit.uuid.uuidString)")
+//                    }
+//                    else {
+//                        print("Placemarks not found for \(visit.uuid.uuidString)")
+//                    }
+//                }
+//                catch let geoCoderError {
+//                    print(geoCoderError.localizedDescription)
+//                }
+            })
         }
         
         callPullToRefresh()

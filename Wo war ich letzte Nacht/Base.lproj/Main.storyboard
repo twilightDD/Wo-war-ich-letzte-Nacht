@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKn-aY-sV5">
-                                <rect key="frame" x="0.0" y="87.333333333333314" width="385" height="641.66666666666674"/>
+                                <rect key="frame" x="0.0" y="130" width="385" height="599"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1C-Z3-urV">
@@ -51,21 +51,35 @@
                                     <segue destination="wya-FW-vNg" kind="presentation" id="ogf-gB-m5z"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G78-ll-yHT">
+                                <rect key="frame" x="16" y="87" width="343" height="32"/>
+                                <segments>
+                                    <segment title="24 Std"/>
+                                    <segment title="2 Tage"/>
+                                    <segment title="Alle"/>
+                                </segments>
+                                <connections>
+                                    <action selector="timeFilterSegmentControlAction:" destination="mwB-dF-8h6" eventType="valueChanged" id="X2F-vK-jfi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oxf-Il-Ch7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="top" secondItem="Oxf-Il-Ch7" secondAttribute="top" id="2vk-JC-5Cl"/>
-                            <constraint firstItem="YKn-aY-sV5" firstAttribute="top" secondItem="P1R-oh-8Yc" secondAttribute="bottom" constant="8.3333333333333428" id="5Ip-Wb-otJ"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="trailing" secondItem="Oxf-Il-Ch7" secondAttribute="trailing" constant="10" id="6uF-vw-gcS"/>
                             <constraint firstItem="wfY-FS-mo4" firstAttribute="centerY" secondItem="W1C-Z3-urV" secondAttribute="centerY" id="9PW-ro-czK"/>
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="W1C-Z3-urV" secondAttribute="trailing" constant="10" id="Hdp-Tb-CRH"/>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" constant="16" id="Si1-Zo-SSo"/>
                             <constraint firstItem="P1R-oh-8Yc" firstAttribute="centerY" secondItem="W1C-Z3-urV" secondAttribute="centerY" id="USr-J7-7ju"/>
                             <constraint firstItem="W1C-Z3-urV" firstAttribute="leading" secondItem="wfY-FS-mo4" secondAttribute="trailing" constant="8" symbolic="YES" id="XjH-Cg-EYe"/>
+                            <constraint firstItem="G78-ll-yHT" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" constant="16" id="a2Y-eC-mNJ"/>
+                            <constraint firstItem="G78-ll-yHT" firstAttribute="top" secondItem="wfY-FS-mo4" secondAttribute="bottom" constant="5" id="ahJ-ao-fTc"/>
+                            <constraint firstItem="YKn-aY-sV5" firstAttribute="top" secondItem="G78-ll-yHT" secondAttribute="bottom" constant="12" id="bUh-I6-Mbp"/>
                             <constraint firstItem="YKn-aY-sV5" firstAttribute="leading" secondItem="Oxf-Il-Ch7" secondAttribute="leading" id="dSJ-TO-QrP"/>
                             <constraint firstItem="Oxf-Il-Ch7" firstAttribute="bottom" secondItem="YKn-aY-sV5" secondAttribute="bottom" id="eBa-9f-ijh"/>
                             <constraint firstItem="wfY-FS-mo4" firstAttribute="height" secondItem="W1C-Z3-urV" secondAttribute="height" id="gUT-Zq-AZe"/>
+                            <constraint firstItem="Oxf-Il-Ch7" firstAttribute="trailing" secondItem="G78-ll-yHT" secondAttribute="trailing" constant="16" id="gUY-FI-rzw"/>
                             <constraint firstItem="wfY-FS-mo4" firstAttribute="leading" secondItem="P1R-oh-8Yc" secondAttribute="trailing" constant="8" symbolic="YES" id="rv3-Qh-SjJ"/>
                         </constraints>
                     </view>
@@ -74,6 +88,7 @@
                         <outlet property="addCurrentLocationButton" destination="W1C-Z3-urV" id="fVf-GZ-s6O"/>
                         <outlet property="helpButton" destination="wfY-FS-mo4" id="ujS-gH-SzC"/>
                         <outlet property="mapView" destination="YKn-aY-sV5" id="JYJ-lX-vJ5"/>
+                        <outlet property="timeFilterSegmentControl" destination="G78-ll-yHT" id="ATG-0o-5dB"/>
                         <outlet property="titleLabel" destination="P1R-oh-8Yc" id="tit-Z3-U7Y"/>
                     </connections>
                 </viewController>
@@ -190,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="325.95419847328242" y="214.78873239436621"/>
         </scene>
-        <!--Visit Details View Controller-->
+        <!--Title-->
         <scene sceneID="BzW-9I-PVW">
             <objects>
                 <viewController id="Dgd-By-nod" customClass="VisitDetailsViewController" customModule="Wo_war_ich_letzte_Nacht" customModuleProvider="target" sceneMemberID="viewController">
@@ -329,7 +344,13 @@
                             <constraint firstItem="dva-cx-RKq" firstAttribute="top" secondItem="EvU-rv-O8q" secondAttribute="bottom" constant="17.333333333333371" id="w7T-kS-H7s"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fcJ-Oq-NUU"/>
+                    <navigationItem key="navigationItem" title="Title" id="vbx-U8-m6X">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="mappin.circle" catalog="system" id="te4-WK-pP4">
+                            <connections>
+                                <action selector="geocodeVisitBarButtonItemAction:" destination="Dgd-By-nod" id="eij-CR-tkh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="arrivalDateDescriptionLabel" destination="6FY-ah-UbL" id="YWZ-qO-mKT"/>
                         <outlet property="arrivalDateLabel" destination="znd-M6-yDT" id="vk5-sS-Ic8"/>
@@ -337,6 +358,7 @@
                         <outlet property="creationDateLabel" destination="sZJ-j2-mxj" id="HzC-Ii-Zm4"/>
                         <outlet property="departureDateDescriptionLabel" destination="q4O-kg-YU0" id="BWh-Ra-yhK"/>
                         <outlet property="departureDateLabel" destination="pBj-a4-bfH" id="mSZ-yy-qUU"/>
+                        <outlet property="geocodeVisitBarButtonItem" destination="te4-WK-pP4" id="Ha5-Jv-9Iv"/>
                         <outlet property="latitudeDescriptionLabel" destination="1ZB-aH-RQQ" id="L8P-nk-y8z"/>
                         <outlet property="latitudeLabel" destination="JTz-Ib-cNn" id="sVt-bd-zMO"/>
                         <outlet property="longitudeDescriptionLabel" destination="jNv-ND-oSM" id="Owz-5y-3Jx"/>
@@ -383,38 +405,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bao-Wk-DBw">
-                                <rect key="frame" x="16" y="115.00000000000001" width="343" height="224.33333333333337"/>
+                                <rect key="frame" x="16" y="115" width="343" height="406"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-7h-lEM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghe-wy-ZSR">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zCv-7h-lEM">
+                                        <rect key="frame" x="0.0" y="43.666666666666657" width="343" height="20.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92x-Qn-aBe">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.33333333333334" height="28.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="118.33333333333333" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active/Inactive" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIv-p0-DBf">
-                                                <rect key="frame" x="176" y="0.0" width="167" height="28.666666666666668"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <rect key="frame" x="222" y="0.0" width="121" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-xL-8Cr">
-                                        <rect key="frame" x="0.0" y="43.666666666666657" width="343" height="42.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="79" width="343" height="34.333333333333343"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Stop Tracking">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="stopTrackingButtonAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="yGS-X8-aep"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-Pj-Bfp">
-                                        <rect key="frame" x="0.0" y="101.33333333333334" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="128.33333333333334" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Permament Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-B7-hrz">
                                                 <rect key="frame" x="0.0" y="0.0" width="205" height="31"/>
@@ -437,7 +465,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f24-rr-Nc7">
-                                        <rect key="frame" x="0.0" y="147.33333333333331" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="174.33333333333331" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Visits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJw-t9-nbR">
                                                 <rect key="frame" x="0.0" y="0.0" width="251" height="31"/>
@@ -460,7 +488,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x3m-uD-zKZ">
-                                        <rect key="frame" x="0.0" y="193.33333333333331" width="343" height="31"/>
+                                        <rect key="frame" x="0.0" y="220.33333333333331" width="343" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Significant Changes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-vw-ku9">
                                                 <rect key="frame" x="0.0" y="0.0" width="251" height="31"/>
@@ -478,6 +506,35 @@
                                                 <rect key="frame" x="294" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="monitorSignificantChangesSwitchAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="xlA-dz-djZ"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-wc-kxr">
+                                        <rect key="frame" x="0.0" y="266.33333333333331" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLV-lV-COp">
+                                        <rect key="frame" x="0.0" y="331.33333333333331" width="343" height="28.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Um5-gL-wWW">
+                                        <rect key="frame" x="0.0" y="375" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Geolocate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-x1-Tl0">
+                                                <rect key="frame" x="0.0" y="0.0" width="284" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Permanent" translatesAutoresizingMaskIntoConstraints="NO" id="1Wr-F1-4N3">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="autoGeolocateSwitchAction:" destination="FuO-wz-Zqw" eventType="touchUpInside" id="Qut-nX-tUe"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -513,6 +570,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" selectedImage="gear" id="1X3-4z-J1m"/>
                     <connections>
+                        <outlet property="autoGeolocateDescriptionLabel" destination="e8T-x1-Tl0" id="e52-IS-Fcy"/>
+                        <outlet property="autoGeolocateSwitch" destination="1Wr-F1-4N3" id="igS-eD-Lbr"/>
                         <outlet property="deleteLocationStoreButton" destination="Gzo-h4-cUE" id="KjA-WY-srz"/>
                         <outlet property="monitorSignificantChangesDescriptionLabel" destination="3cW-vw-ku9" id="Mau-Y8-Ndo"/>
                         <outlet property="monitorSignificantChangesEnergyLabel" destination="cgB-rd-E2J" id="og9-XD-wy0"/>

@@ -11,6 +11,32 @@ import MapKit
 //MARK: - LocationsViewController
 class LocationsViewController: UIViewController {
     
+    fileprivate enum TimeFilter: Int {
+        case oneDay = 0
+        case twoDays = 1
+        case all = 2
+        
+        static func predicate(forTimeFilter timeFilter: TimeFilter)
+        -> NSPredicate? {
+            var predicate: NSPredicate?
+            
+            switch timeFilter {
+                case .oneDay:
+                    let nowMinus24Hours = Date().addingTimeInterval(-24*60*60)
+                    predicate = NSPredicate(format: "%K > %@",
+                                                  argumentArray: [TrackedVisit.Attributes.arrivalDate, nowMinus24Hours])
+                case .twoDays:
+                    let nowMinus48Hours = Date().addingTimeInterval(-48*60*60)
+                    predicate = NSPredicate(format: "%K > %@",
+                                                  argumentArray: [TrackedVisit.Attributes.arrivalDate, nowMinus48Hours])
+                case .all:
+                    predicate = nil
+            }
+            
+            return predicate
+        }
+    }
+    
     //MARK: Lets & Vars
     private var datasourceManager: SOXWatchDogFRC?
     
@@ -36,6 +62,7 @@ class LocationsViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var addCurrentLocationButton: UIButton!
     @IBOutlet var helpButton: UIButton!
+    @IBOutlet var timeFilterSegmentControl: UISegmentedControl!
     @IBOutlet var mapView: MKMapView!
     
     
@@ -84,7 +111,9 @@ class LocationsViewController: UIViewController {
     }
     
     private func setupDatasourceManager() {
+        let predicate = TimeFilter.predicate(forTimeFilter: .oneDay)
         datasourceManager = SOXWatchDogFRC.manager(withEntityForName: TrackedVisit.entityName(),
+                                                   predicate: predicate,
                                                    delegate: self,
                                                    name: "watchdog for TrackedVisit")
     }
@@ -117,6 +146,8 @@ class LocationsViewController: UIViewController {
                                                         content: content, trigger: trigger)
                     
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    
+                    CoreDataLocationManager.updateGeocode(forVisitWithUUID: newTrackedVisit.uuid)
                 }
                 else {
                     let title = "An error occured."
@@ -132,6 +163,15 @@ class LocationsViewController: UIViewController {
             })
     }
     
+
+    @IBAction func timeFilterSegmentControlAction(_ sender: UISegmentedControl) {
+        guard let timeFilter = TimeFilter(rawValue: sender.selectedSegmentIndex) else {
+            fatalError() }
+        
+        let filterPredicate = TimeFilter.predicate(forTimeFilter: timeFilter)
+        datasourceManager?.updatePredicate(filterPredicate)
+        updateMap()
+    }
   
 }
 

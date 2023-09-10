@@ -60,6 +60,10 @@ class CoreDataLocationManager: NSObject {
         SOXLocationManager.unRegisterForSignificantLocationChanges(target: shared)
     }
     
+    static func updateGeocode(forVisitWithUUID uuid: UUID) {
+        shared.updateGeocode(forVisitWithUUID: uuid)
+    }
+    
 }
 
 
@@ -73,6 +77,9 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
     /// permanentTracking and significant change
     func didUpdateLocation(_ location: CLLocation?) {
         if let location {
+            
+            var newTrackedVisit: TrackedVisit?
+            
             SOXCoreDatabase.performAndSaveInUIEditContext(
                 workingBlock:  { context in
                     
@@ -84,18 +91,24 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
                         trackingType = .significantChange
                     }
                     
-                    let _ = TrackedVisit.insert(inContext: context,
-                                                trackingType: trackingType,
-                                                arrivalDate:  location.timestamp,
-                                                departureDate: nil,
-                                                horizontalAccuracy: location.horizontalAccuracy,
-                                                latitude: location.coordinate.latitude,
-                                                longitude: location.coordinate.longitude)
+                    newTrackedVisit = TrackedVisit.insert(inContext: context,
+                                                          trackingType: trackingType,
+                                                          arrivalDate:  location.timestamp,
+                                                          departureDate: nil,
+                                                          horizontalAccuracy: location.horizontalAccuracy,
+                                                          latitude: location.coordinate.latitude,
+                                                          longitude: location.coordinate.longitude)
                 },
-                completionBlock: {
+                completionBlock: { [weak self] in
                     print("did add a new CoreData.Location")
                     let allLocations = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self)
                     print("now: \(allLocations.count)")
+                    
+                    // Automatically geolocate, if enabled
+                    if let newTrackedVisit,
+                       SOXUserDefaultsManager.bool(forKey: UserDefaultKey.autoGeolocate) {
+                        self?.updateGeocode(forVisitWithUUID: newTrackedVisit.uuid)
+                    }
                 })
         }
     }
@@ -104,21 +117,61 @@ extension CoreDataLocationManager: SOXLocationManagerDelegate {
     /// visit
     func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
         print("CoreDataLocationManager - didVisit")
+        var newTrackedVisit: TrackedVisit?
         SOXCoreDatabase.performAndSaveInUIEditContext(
             workingBlock:  { context in
-                let _ = TrackedVisit.insert(inContext: context,
-                                            trackingType: .visit,
-                                            arrivalDate: visit.arrivalDate,
-                                            departureDate: visit.departureDate,
-                                            horizontalAccuracy: visit.horizontalAccuracy,
-                                            latitude: visit.coordinate.latitude,
-                                            longitude: visit.coordinate.longitude)
+                newTrackedVisit = TrackedVisit.insert(inContext: context,
+                                                      trackingType: .visit,
+                                                      arrivalDate: visit.arrivalDate,
+                                                      departureDate: visit.departureDate,
+                                                      horizontalAccuracy: visit.horizontalAccuracy,
+                                                      latitude: visit.coordinate.latitude,
+                                                      longitude: visit.coordinate.longitude)
                 
             },
-            completionBlock: {
-                let allTrackedVisits = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self)
-                print("did add a new CoreData.TrackedVisit. now: \(allTrackedVisits.count)")
+            completionBlock: { [weak self] in
+                
+                // Automatically geolocate, if enabled
+                if let newTrackedVisit,
+                   SOXUserDefaultsManager.bool(forKey: UserDefaultKey.autoGeolocate) {
+                    self?.updateGeocode(forVisitWithUUID: newTrackedVisit.uuid)
+                }
+                   
             })
     }
+    
+}
+
+
+extension CoreDataLocationManager {
+    
+    private func updateGeocode(forVisitWithUUID uuid: UUID) {
+        let editContext = SOXCoreDatabase.newEditContext(forUI: true)
+        guard let visit = TrackedVisit.fetch(withUUID: uuid, inContext: editContext) else {
+            return }
+        
+        let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
+        
+        let geoCoder = CLGeocoder()
+        Task {
+            do {
+                let placemarks = try await geoCoder.reverseGeocodeLocation(clLocation)
+                if let placemark = placemarks.first {
+                    visit.updateAndSaveWith(placemark: placemark,
+                                            inContext: editContext,
+                                            completionBlock: nil)
+                    print("Placemarks found for \(visit.uuid.uuidString)")
+                    
+                }
+                else {
+                    print("Placemarks not found for \(visit.uuid.uuidString)")
+                }
+            }
+            catch let geoCoderError {
+                print(geoCoderError.localizedDescription)
+            }
+        }
+    }
+        
     
 }
