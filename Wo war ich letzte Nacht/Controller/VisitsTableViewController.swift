@@ -60,7 +60,7 @@ class VisitsTableViewController: UITableViewController {
     
     private func setupDatasource() {
         let allVisits = SOXCoreDatabase.viewOnlyContext().fetchObjects(forEntityClass: TrackedVisit.self,
-                                                                       sortByKeypath: TrackedVisit.Attributes.arrivalDate)
+                                                                       reverseSortByKeypath: TrackedVisit.Attributes.arrivalDate)
         visits = allVisits
         
     }
