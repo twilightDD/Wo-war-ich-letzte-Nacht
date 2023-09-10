@@ -142,6 +142,10 @@ class VisitsTableViewController: UITableViewController {
         let editContext = SOXCoreDatabase.newEditContext(forUI: true)
         
         for visit in visits {
+            guard visit.placemark == nil else {
+                print("Placemark already set for \(visit.uuid.uuidString)")
+                continue }
+            
             let clLocation = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
             
             do {
@@ -152,9 +156,10 @@ class VisitsTableViewController: UITableViewController {
                                             completionBlock: { [weak self] in
                         self?.updateUI()
                     })
+                    print("Placemarks found for \(visit.uuid.uuidString)")
                 }
                 else {
-                    print("no placemarks for \(visit.uuid.uuidString)")
+                    print("Placemarks not found for \(visit.uuid.uuidString)")
                 }
             }
             catch let geoCoderError {
